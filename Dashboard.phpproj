@@ -25,16 +25,16 @@
     <IncludeDebugInformation>false</IncludeDebugInformation>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="base\AppConfig.php" />
-    <Compile Include="base\AppHelper.php" />
-    <Compile Include="base\Authentication.php" />
-    <Compile Include="base\Common.php" />
-    <Compile Include="base\DatabaseHelper.php" />
-    <Compile Include="base\LDAP.php" />
-    <Compile Include="base\Session.php" />
-    <Compile Include="base\Templates\Footer.php" />
-    <Compile Include="base\Templates\Header.php" />
-    <Compile Include="base\TSTemplate.php" />
+    <Compile Include="Base\AppConfig.php" />
+    <Compile Include="Base\AppHelper.php" />
+    <Compile Include="Base\Authentication.php" />
+    <Compile Include="Base\Common.php" />
+    <Compile Include="Base\DatabaseHelper.php" />
+    <Compile Include="Base\LDAP.php" />
+    <Compile Include="Base\Session.php" />
+    <Compile Include="Base\Templates\Footer.php" />
+    <Compile Include="Base\Templates\Header.php" />
+    <Compile Include="Base\TSTemplate.php" />
     <Compile Include="index.php" />
     <Compile Include="Libs\DashboardHelper.php" />
     <Compile Include="Pages\login.php" />
@@ -46,8 +46,8 @@
     <Compile Include="Libs\PHPMailerAutoload.php" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="base\" />
-    <Folder Include="base\Templates\" />
+    <Folder Include="Base\" />
+    <Folder Include="Base\Templates\" />
     <Folder Include="Libs\" />
     <Folder Include="Pages\" />
     <Folder Include="Services\" />
@@ -59,8 +59,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\css\app.css" />
+    <Content Include="Resources\css\app.min.css" />
     <Content Include="Resources\css\base.css" />
+    <Content Include="Resources\css\base.min.css" />
     <Content Include="Resources\css\dev.css" />
+    <Content Include="Resources\css\dev.min.css" />
     <Content Include="Resources\css\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Resources\css\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Resources\css\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -75,8 +78,13 @@
     <Content Include="Resources\css\images\ui-icons_888888_256x240.png" />
     <Content Include="Resources\css\images\ui-icons_cd0a0a_256x240.png" />
     <Content Include="Resources\css\login-page.css" />
+    <Content Include="Resources\css\login-page.min.css" />
     <Content Include="Resources\js\base.js" />
+    <Content Include="Resources\js\base.min.js" />
+    <Content Include="Resources\js\base.min.js.map" />
     <Content Include="Resources\js\dev.js" />
+    <Content Include="Resources\js\dev.min.js" />
+    <Content Include="Resources\js\dev.min.js.map" />
     <Content Include="Resources\js\jquery-1.11.2.min.js" />
     <Content Include="Resources\js\jquery-ui.min.js" />
   </ItemGroup>

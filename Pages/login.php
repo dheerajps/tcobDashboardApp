@@ -28,8 +28,7 @@ if (has_presence($_POST['submit'])) {
 TSTemplate::header(array(
     'base.min.css',
     'app.min.css',
-    'login-page.min.css',
-    'login-page.min.js'
+    'login-page.min.css'
 ));
 ?>
 <h1>Login</h1>
@@ -49,5 +48,5 @@ TSTemplate::header(array(
     <input type="submit" id="submit" name="submit" value="Login">
 </form>
 <?php
-TSTemplate::footer();
+    TSTemplate::footer();
 ?>

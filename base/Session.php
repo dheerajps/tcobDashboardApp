@@ -3,6 +3,7 @@
 //$sessionTempLifetime = 600;
 //session_set_cookie_params($sessionTempLifetime, APP_PAGES_PATH, SESSION_DOMAIN, SESSION_SECURE, SESSION_HTMLONLY);
  
+require_once( __DIR__.'/AppHelper.php'  );
 session_start();
 
 //setcookie(session_name(),session_cache_expire_id(),time() + lifetime);

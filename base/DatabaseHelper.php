@@ -48,7 +48,7 @@ class DatabaseHelper {
         }
     }
 
-    /**
+    /*
      *query, prepares and executes sql
      *@param $string, the string which will be prepared and executed
      *@param $params, the array of parameters to match the ? placeholders in $string
@@ -111,7 +111,7 @@ class DatabaseHelper {
         return $fullDataSet;
     }
 
-    /** 
+    /*
      * Summary of dbExecuteSP
      * @param string $stored_procedure name of the stored procedure to execute - should include schema - ie DBO.SP_NAME etc.
      * @param array $params array of parameters in the order they are defined in the stored procedure, put in NULL for NULL params

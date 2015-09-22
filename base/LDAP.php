@@ -85,11 +85,11 @@ function AssignUserGroups($pawprint)
     $attrs = ldap_get_attributes($ldap_connection, $ldapEntry);
     //$accessLevel = 'NO_RIGHTS'; // default to no rights
     
-    // overrides
-    //if ($pawprint == 'salmonsv') {        
-    //    return 'CHECKER_RIGHTS';
-    //}
-/*    if ($pawprint == 'hogansa') {        
+    //overrides
+    if ($pawprint == 'tps9tb') {        
+        return 'ACCESS';
+    }
+    /*if ($pawprint == 'hogansa') {        
         return 'CHECKER_RIGHTS';
     }*/
     
