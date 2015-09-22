@@ -39,6 +39,7 @@
     <Compile Include="Libs\DashboardHelper.php" />
     <Compile Include="Pages\login.php" />
     <Compile Include="Pages\logout.php" />
+    <Compile Include="Pages\index.php" />
     <Compile Include="Services\GetDashboard.php" />
     <Compile Include="Test.php" />
     <Compile Include="Libs\class.phpmailer.php" />

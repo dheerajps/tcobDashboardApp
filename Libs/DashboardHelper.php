@@ -49,7 +49,7 @@ class DashboardHelper {
 			"CHECKER_RIGHTS" => 'PickEvent.php',
 			"STUDENT_RIGHTS" => 'index.php',
 			"NO_RIGHTS"      => 'index.php',
-            "ACCESS"         => '/Pages/index.php'
+            "ACCESS"         => 'index.php'
 			);
 
 		// assumes that the session base library has checked that the user is logged in
@@ -57,7 +57,7 @@ class DashboardHelper {
 
 		// TODO: test this condition
 		if ( !has_presence( $_SESSION['RIGHTS'] ) ) {
-			header( 'Location: '.$baseOfRedirectURL."Login.php" );
+			header( 'Location: '.$baseOfRedirectURL."login.php" );
 			return;
 		} else {
             // the user rights should be set when the user logs in

@@ -37,7 +37,8 @@ if ( !isset($_SESSION['SECRET'])
 		$_SESSION['Destination'] = $_SERVER['REQUEST_URI'];
 		header("Location: ".DEFAULT_PROTOCOL.":".APP_PAGES_PATH."login.php");
 	}
-} 
+}
+// If you access the login page WHILE already logged in, it reroutes to index page
 else if (preg_match('/login\.php/',$_SERVER['REQUEST_URI'])) {
 	header("Location: ".DEFAULT_PROTOCOL.":".APP_BASE_URL."index.php");
 }
