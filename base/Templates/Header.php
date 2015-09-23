@@ -31,6 +31,11 @@
     <meta name="msapplication-TileImage" content="/pdp-attendance/resources/images/mstile-144x144.png">
     <meta name="msapplication-config" content="/pdp-attendance/resources/images/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
+
+    <!-- Adding the dependencies for Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
 <?php
 // load css first
 foreach ($css as $link) {
@@ -41,6 +46,7 @@ if (DEVELOPMENT_MODE === true) {
     echo "\t<link rel='stylesheet' type='text/css' href='" . APP_RESOURCE_PATH . "css/dev.css' />\n";
 }
 ?>
+
     <script src="<?php echo APP_RESOURCE_PATH ;?>js/jquery-1.11.2.min.js"></script>
 <?php
 // load up javascript

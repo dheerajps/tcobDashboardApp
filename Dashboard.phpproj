@@ -40,6 +40,7 @@
     <Compile Include="Pages\login.php" />
     <Compile Include="Pages\logout.php" />
     <Compile Include="Pages\index.php" />
+    <Compile Include="Resources\css\index-page.css" />
     <Compile Include="Services\GetDashboard.php" />
     <Compile Include="Test.php" />
     <Compile Include="Libs\class.phpmailer.php" />
@@ -78,6 +79,7 @@
     <Content Include="Resources\css\images\ui-icons_454545_256x240.png" />
     <Content Include="Resources\css\images\ui-icons_888888_256x240.png" />
     <Content Include="Resources\css\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Resources\css\index-page.min.css" />
     <Content Include="Resources\css\login-page.css" />
     <Content Include="Resources\css\login-page.min.css" />
     <Content Include="Resources\js\base.js" />

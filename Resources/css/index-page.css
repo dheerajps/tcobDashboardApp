@@ -1,0 +1,54 @@
+#dashboard-topics-wrapper {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+#dashboard-topics-banner {
+    margin: 0;
+    text-align: center;
+}
+
+#dashboard-topics {
+    float: left;
+    list-style: none;
+    margin-left: 0;
+    width: 100%;
+    padding-top: 1em;
+}
+
+li a.nav-buttons {
+    background-color: #BFBFBF;
+    border-top: 1px solid #979797;
+    border-bottom: 1px solid #979797;
+    width: 100%;
+    color: #f1b82d;
+    text-shadow: -1px 0 10px #565656, 0 1px 10px #565656, 1px 0 10px #565656, 0 -1px 10px #565656;
+    font-size: 22px;
+    padding: .25em;
+    border-radius: 0;
+    margin-bottom: -1px;
+    outline: none;
+}
+
+li a.nav-buttons:hover {
+    background-color: #A9A9A9;
+    color: #f1b82d !important;
+}
+
+#dashboard-topics .nav-buttons-wrapper.active a.nav-buttons.btn {
+    color: #f1b82d !important;
+    background-color: #828282;
+}
+
+#dashboard-topics .nav-buttons-wrapper {
+    margin: 0;
+    margin-top: 0;
+}
+
+ul li {
+    padding-bottom: 0 !important;
+}
+
+.nav-buttons.btn:focus {
+    color: #f1b82d !important;
+}
