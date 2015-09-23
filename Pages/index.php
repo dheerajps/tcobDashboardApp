@@ -18,7 +18,7 @@ TSTemplate::header(array(
                 <h1> Dashboard Topics </h1>
             </div>
             <ul class="nav nav-pills nav-stacked" id="dashboard-topics">
-                <li class="nav-buttons-wrapper active"><a class="nav-buttons btn">Strategic Initiative</a></li>
+                <li class="nav-buttons-wrapper"><a class="nav-buttons btn">Strategic Initiative</a></li>
                 <li class="nav-buttons-wrapper"><a class="nav-buttons btn">Business Things</a></li>
                 <li class="nav-buttons-wrapper"><a class="nav-buttons btn">Other Business</a></li>
             </ul>
