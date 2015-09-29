@@ -1,7 +1,11 @@
-﻿// When you select a topic from the menu
+﻿/*
+ * When you select a topic from the menu
+ * 
+ * TO CHANGE: Fix logic around when data for topics and sections are loaded dynamically
+ */ 
 $(document).on('click', ".btn.topic-buttons.nav-buttons", function (event) {
     // One variable will measure the position from the top of the page to the div, and one measures
-    // from the currently selected topic to the top of its div (confusing but it works, don't question it)  :)
+    // from the currently selected topic to the top of the page (confusing but it works, don't question it)  :)
     var topPosition = $(event.target).closest(".nav-buttons-wrapper").offset().top,
         topOffset = $(event.target).closest('#dashboard-topics').offset().top;
 
@@ -14,27 +18,36 @@ $(document).on('click', ".btn.topic-buttons.nav-buttons", function (event) {
     // If the currently selected topic's content is hidden
     if ($('.dashboard-sections-wrapper').is(':hidden')) {
         $('#no-topics').hide();
-        $('.dashboard-sections-wrapper').show();
+        $('.dashboard-sections-wrapper').show(); // Shows the div containing the list of sections instead of the message 
     }
 
     // Fade the content of the section names in 
-    $('.dashboard-sections').fadeIn();
+    // TO CHANGE: Show the specfic div for that topic, still fade it in each time, but find a way to distinguish a topic's section div from others, and hide the others
+    $('.dashboard-sections').fadeIn(); // Will automatically "show" the div, need to hide the others 
+    // ------------- (AS OF RIGHT NOW... this only changes the position of the dummy data, it doesn't "re show" new data) -------------
 
     //Position the sections-list div to the right vertical height to match the selected topic
-    $('#sections-list').css('margin-top', (topPosition-topOffset));
+    $('#sections-list').css('margin-top', (topPosition - topOffset));
 });
 
 /* 
  * When you select a section from the menu...
+ * 
+ * TO CHANGE: After data is loaded dynamically, populate each section, DO NOT erase the data, just show/hide all of the data instead.  Will make it much faster
  */
 $(document).on('click', '.btn.nav-buttons.section-buttons', function (event) {
     // Dummy data to be appended and act like the dynamic data that we will use in the end
+    // TO CHANGE: Will remove dummy data after data is loaded dynamically 
     var html = "<ul class='nav nav-pills nav-stacked dashboards'>"+
                     "<li role='presentation'><a href='#'>This one</a></li>"+
                     "<li role='presentation'><a href='#'>That one</a></li>"+
                     "<li role='presentation'><a href='#'>Those ones</a></li>"+
                     "<li role='presentation'><a href='#'>These ones</a></li>"+
                 "</ul>";
+
+    // TO CHANGE: Remove this after data is loaded dynamically, since it will just be showing what is already there, NOTTTT appending it 
+    $(event.target).closest('.nav-buttons-wrapper').find('.section-buttons').nextAll().remove();
+
     // Append the dummy data to the current section, (accordion style) and hide any dashboards that are open in other sections
     $(event.target).closest('.nav-buttons-wrapper').append(html);
     $(event.target).closest('.nav-buttons-wrapper').siblings().find('a').nextAll().remove();
@@ -44,5 +57,4 @@ $(document).on('click', '.btn.nav-buttons.section-buttons', function (event) {
     $(event.target).css('border-bottom', 'none');
     $(event.target).closest('.nav-buttons-wrapper').siblings().css('border-bottom', 'none');
     $(event.target).closest('.nav-buttons-wrapper').siblings().find('a.section-buttons').css('border-bottom', '1px solid #979797');
-    $('.dashboards').show();
 });
