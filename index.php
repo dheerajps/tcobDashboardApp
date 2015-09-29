@@ -33,7 +33,7 @@ TSTemplate::header(array(
                 <li class="nav-buttons-wrapper"><a class="nav-buttons btn topic-buttons">Strategic Initiative</a></li>
                 <li class="nav-buttons-wrapper"><a class="nav-buttons btn topic-buttons">Business Things</a></li>
                 <li class="nav-buttons-wrapper"><a class="nav-buttons btn topic-buttons">Other Business</a></li>
-                <li class="nav-buttons-wrapper"><a class="nav-buttons btn topic-buttons">Strategic Initiative</a></li>
+                <li class="nav-buttons-wrapper this"><a class="nav-buttons btn topic-buttons">Strategic Initiative</a></li>
                 <li class="nav-buttons-wrapper"><a class="nav-buttons btn topic-buttons">Business Things</a></li>
                 <li class="nav-buttons-wrapper"><a class="nav-buttons btn topic-buttons">Other Business</a></li><li class="nav-buttons-wrapper"><a class="nav-buttons btn topic-buttons">Strategic Initiative</a></li>
                 <li class="nav-buttons-wrapper"><a class="nav-buttons btn topic-buttons">Business Things</a></li>
@@ -42,7 +42,7 @@ TSTemplate::header(array(
                 <li class="nav-buttons-wrapper"><a class="nav-buttons btn topic-buttons">Other Business</a></li>
             </ul>
         </div>
-        <div class="col-md-6 dashboard-wrapper">
+        <div id="sections-list" class="col-md-6 dashboard-wrapper">
             <div class="row dashboard-banner">
                 <br>
                 <h2> Section Topics </h2>
@@ -50,8 +50,8 @@ TSTemplate::header(array(
             <div id="no-topics" class="well">
                 <h5>Select a topic from the list on the left in order to show a list of sections</h5>
             </div>
-            <div id="dashboard-sections-wrapper">
-                <ul class="nav nav-pills nav-stacked" id="dashboard-sections">
+            <div class="dashboard-sections-wrapper">
+                <ul class="nav nav-pills nav-stacked dashboard-sections">
                     <li class="nav-buttons-wrapper"><a class="nav-buttons btn section-buttons">Section 1</a></li>
                     <li class="nav-buttons-wrapper"><a class="nav-buttons btn section-buttons">Section 2</a></li>
                     <li class="nav-buttons-wrapper"><a class="nav-buttons btn section-buttons">Section 3</a></li>
