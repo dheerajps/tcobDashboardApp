@@ -13,8 +13,8 @@
     <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
     <Server>PHPDev</Server>
     <PublishEvent>None</PublishEvent>
-    <PHPDevAutoPort>True</PHPDevAutoPort>
-    <PHPDevPort>18068</PHPDevPort>
+    <PHPDevAutoPort>False</PHPDevAutoPort>
+    <PHPDevPort>46246</PHPDevPort>
     <PHPDevHostName>localhost</PHPDevHostName>
     <IISProjectUrl>http://localhost:18068/</IISProjectUrl>
   </PropertyGroup>
@@ -25,6 +25,7 @@
     <IncludeDebugInformation>false</IncludeDebugInformation>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Archive.php" />
     <Compile Include="Base\AppConfig.php" />
     <Compile Include="Base\AppHelper.php" />
     <Compile Include="Base\Authentication.php" />
@@ -60,6 +61,7 @@
     <Folder Include="Resources\css\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="README.md" />
     <Content Include="Resources\css\app.css" />
     <Content Include="Resources\css\app.min.css" />
     <Content Include="Resources\css\base.css" />
