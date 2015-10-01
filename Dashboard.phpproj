@@ -84,12 +84,16 @@
     <Content Include="Resources\css\index-page.min.css" />
     <Content Include="Resources\css\login-page.css" />
     <Content Include="Resources\css\login-page.min.css" />
+    <Content Include="Resources\css\style.css" />
     <Content Include="Resources\js\base.js" />
     <Content Include="Resources\js\base.min.js" />
     <Content Include="Resources\js\base.min.js.map" />
     <Content Include="Resources\js\dev.js" />
     <Content Include="Resources\js\dev.min.js" />
     <Content Include="Resources\js\dev.min.js.map" />
+    <Content Include="Resources\js\index-page.js" />
+    <Content Include="Resources\js\index-page.min.js" />
+    <Content Include="Resources\js\index-page.min.js.map" />
     <Content Include="Resources\js\jquery-1.11.2.min.js" />
     <Content Include="Resources\js\jquery-ui.min.js" />
   </ItemGroup>

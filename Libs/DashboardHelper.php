@@ -47,9 +47,9 @@ class DashboardHelper {
 		$userDefaultRouteMap = array(
 			"ADMIN_RIGHTS"   => 'Admin.php',
 			"CHECKER_RIGHTS" => 'PickEvent.php',
-			"STUDENT_RIGHTS" => 'index.php',
-			"NO_RIGHTS"      => 'index.php',
-            "ACCESS"         => 'index.php'
+			"STUDENT_RIGHTS" => '../',
+			"NO_RIGHTS"      => '../',
+            "ACCESS"         => '../'
 			);
 
 		// assumes that the session base library has checked that the user is logged in

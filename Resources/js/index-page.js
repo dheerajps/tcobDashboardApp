@@ -39,10 +39,10 @@ $(document).on('click', '.btn.nav-buttons.section-buttons', function (event) {
     // Dummy data to be appended and act like the dynamic data that we will use in the end
     // TO CHANGE: Will remove dummy data after data is loaded dynamically 
     var html = "<ul class='nav nav-pills nav-stacked dashboards'>"+
-                    "<li role='presentation'><a href='#'>This one</a></li>"+
-                    "<li role='presentation'><a href='#'>That one</a></li>"+
-                    "<li role='presentation'><a href='#'>Those ones</a></li>"+
-                    "<li role='presentation'><a href='#'>These ones</a></li>"+
+                    "<li role='presentation' class='dashboard-button'><a href='#'>This one</a></li>"+
+                    "<li role='presentation' class='dashboard-button'><a href='#'>That one</a></li>" +
+                    "<li role='presentation' class='dashboard-button'><a href='#'>Those ones</a></li>" +
+                    "<li role='presentation' class='dashboard-button'><a href='#'>These ones</a></li>" +
                 "</ul>";
 
     // TO CHANGE: Remove this after data is loaded dynamically, since it will just be showing what is already there, NOTTTT appending it 
@@ -57,4 +57,17 @@ $(document).on('click', '.btn.nav-buttons.section-buttons', function (event) {
     $(event.target).css('border-bottom', 'none');
     $(event.target).closest('.nav-buttons-wrapper').siblings().css('border-bottom', 'none');
     $(event.target).closest('.nav-buttons-wrapper').siblings().find('a.section-buttons').css('border-bottom', '1px solid #979797');
+});
+
+$(document).on('click', 'li .dashboard-button', function () {
+    $.ajax({
+        type: "GET",
+        url: "Services/GetDashboard.php?id=1&mode=",
+        dataType: 'html',
+        success: function (msg) {
+            $("#cyfe-display").html(msg);
+            $("#cyfe-display").show();
+            $("#menu-nav").hide();
+        }
+    });
 });

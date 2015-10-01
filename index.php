@@ -23,7 +23,7 @@ TSTemplate::header(array(
 </div>
 
 
-    <div class="row">
+    <div class="row" id="menu-nav">
         <div class="col-md-6 dashboard-wrapper">
             <div class="row dashboard-banner">
                 <br>
@@ -59,6 +59,7 @@ TSTemplate::header(array(
             </div>
         </div>
     </div>
+    <div id="cyfe-display"></div>
 
 
 

@@ -127,3 +127,8 @@ ul li {
     margin-right: 4.5em;
     margin-left: 4.5em;
 }
+
+/* The wrapper for the cyfe dashboard that is selected (initially hidden until one is chosen) */
+#cyfe-display {
+    display: none;
+}
