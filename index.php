@@ -13,14 +13,14 @@ TSTemplate::header(array(
 ?>
 
 
-<div id="breadcrumb">
+<!--<div id="breadcrumb">
     <ul class="crumbs2">
         <li class="first"><a href="#" style="z-index:9;"><span></span>Home</a></li>
         <li><a href="/Archive.php" style="z-index:9;">Archive </a></li>
         <li><a href="#" style="z-index:7;">2011 Writing</a></li>
         <li><a href="#" style="z-index:6;">Tips for jQuery Development in HTML5</a></li>
     </ul>
-</div>
+</div>-->
 
 
     <div class="row" id="menu-nav">
@@ -59,6 +59,7 @@ TSTemplate::header(array(
             </div>
         </div>
     </div>
+    <!-- TO DO: Add a loading spinner for when the AJAX call is processing -->
     <div id="cyfe-display"></div>
 
 

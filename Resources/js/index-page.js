@@ -60,6 +60,7 @@ $(document).on('click', '.btn.nav-buttons.section-buttons', function (event) {
 });
 
 $(document).on('click', 'li .dashboard-button', function () {
+    var backButton = "<button type='button' id='back-button'>Back</button>";
     $.ajax({
         type: "GET",
         url: "Services/GetDashboard.php?id=1&mode=",
@@ -68,6 +69,22 @@ $(document).on('click', 'li .dashboard-button', function () {
             $("#cyfe-display").html(msg);
             $("#cyfe-display").show();
             $("#menu-nav").hide();
+            // SUPER hacky and horrible and disgusting, and I will find a way to make this better.  Don't think of me as any lesser of a person because of this horrible code
+            $('#page').css({ '-webkit-box-shadow': 'none', 'box-shadow': 'none' });
+            $('#content').css('background-color', 'transparent');
+            setTimeout(function () {
+                $('#dashboard-container').css('top', '11em');
+            }, 2000);
+            $("#header").after(backButton);
         }
     });
+});
+
+$(document).on('click', '#back-button', function () {
+    $('#page').css({ '-webkit-box-shadow': '0 0 7px  1px #000', 'box-shadow': '0 0 7px  1px #000' });
+    $('#content').css('background-color', '#fff');
+    $('#back-button').remove();
+    $("#cyfe-display").hide();
+    $("#menu-nav").show();
+    $("#cyfe-display").remove();
 });

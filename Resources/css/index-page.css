@@ -131,4 +131,10 @@ ul li {
 /* The wrapper for the cyfe dashboard that is selected (initially hidden until one is chosen) */
 #cyfe-display {
     display: none;
+    max-height: 80%;
+    max-width: 80%;
+}
+
+#back-button {
+    margin-top: 0.5em;
 }
