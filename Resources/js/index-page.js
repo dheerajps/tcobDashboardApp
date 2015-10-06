@@ -61,34 +61,25 @@ $(document).on('click', '.btn.nav-buttons.section-buttons', function (event) {
 
 $(document).on('click', 'li .dashboard-button', function () {
     var backButton = "<button type='button' id='back-button'>Back</button>";
-    /*$.ajax({
-        type: "GET",
-        url: "Services/GetDashboard.php?id=1&mode=",
-        dataType: 'html',
-        success: function (msg) {*/
-            //$('#content').css('background-color', 'transparent');
-            $("#cyfe-iframe").attr('src', 'https://app.cyfe.com/dashboards/682/4f1e480ccb8cf101202552286564');
-            $("#menu-nav").hide();
-            $("#header").before(backButton);
-            $("#cyfe-display").fadeIn();
+    $("#cyfe-iframe").attr('src', 'https://app.cyfe.com/dashboards/682/4f1e480ccb8cf101202552286564');
+    $("#menu-nav").hide();
+    $("#header").before(backButton);
+    $("#cyfe-display").fadeIn();
 
-            //Change the page around
-            $('#page').attr('id', 'hidden-page');
-            //$('#logout').addClass('page');
-            $('#header-wrapper').addClass('page');
-        //}
-    //});
+    //Change the page around
+    $('#page').attr('id', 'hidden-page');
+    //$('#logout').addClass('page');
+    $('#header-wrapper').addClass('page');
 });
 
 $(document).on('click', '#back-button', function () {
-    //$('#content').css('background-color', '#fff');
     $('#back-button').remove();
     $("#cyfe-display").hide();
-    $("#menu-nav").show();
+    $("#menu-nav").css('display', 'block');
     $("#cyfe-iframe").attr('src', '');
 
     //Change the page back to normal template
     $('#hidden-page').attr('id', 'page');
-    $('#logout').removeClass('page');
+    //$('#logout').removeClass('page');
     $('#header-wrapper').removeClass('page');
 });
