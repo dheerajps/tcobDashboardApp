@@ -24,7 +24,7 @@ TSTemplate::header(array(
 
 
     <div class="row" id="menu-nav">
-        <div class="col-md-6 dashboard-wrapper">
+        <div class="col-md-6 col-xs-6 dashboard-wrapper">
             <div class="row dashboard-banner">
                 <br>
                 <h2> Dashboard Topics </h2>
@@ -33,7 +33,7 @@ TSTemplate::header(array(
                 <li class="nav-buttons-wrapper"><a class="nav-buttons btn topic-buttons">Strategic Initiative</a></li>
                 <li class="nav-buttons-wrapper"><a class="nav-buttons btn topic-buttons">Business Things</a></li>
                 <li class="nav-buttons-wrapper"><a class="nav-buttons btn topic-buttons">Other Business</a></li>
-                <li class="nav-buttons-wrapper this"><a class="nav-buttons btn topic-buttons">Strategic Initiative</a></li>
+                <li class="nav-buttons-wrapper"><a class="nav-buttons btn topic-buttons">Strategic Initiative</a></li>
                 <li class="nav-buttons-wrapper"><a class="nav-buttons btn topic-buttons">Business Things</a></li>
                 <li class="nav-buttons-wrapper"><a class="nav-buttons btn topic-buttons">Other Business</a></li><li class="nav-buttons-wrapper"><a class="nav-buttons btn topic-buttons">Strategic Initiative</a></li>
                 <li class="nav-buttons-wrapper"><a class="nav-buttons btn topic-buttons">Business Things</a></li>
@@ -42,7 +42,7 @@ TSTemplate::header(array(
                 <li class="nav-buttons-wrapper"><a class="nav-buttons btn topic-buttons">Other Business</a></li>
             </ul>
         </div>
-        <div id="sections-list" class="col-md-6 dashboard-wrapper">
+        <div id="sections-list" class="col-md-6 col-xs-6 dashboard-wrapper">
             <div class="row dashboard-banner">
                 <br>
                 <h2> Section Topics </h2>
@@ -60,7 +60,7 @@ TSTemplate::header(array(
         </div>
     </div>
     <!-- TO DO: Add a loading spinner for when the AJAX call is processing -->
-    <div id="cyfe-display"></div>
+    <div id="cyfe-display" class="col-md-12 col-xs-12"><iframe id="cyfe-iframe"></iframe></div>
 
 
 

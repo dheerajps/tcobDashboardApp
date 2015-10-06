@@ -71,13 +71,16 @@ if (DEVELOPMENT_MODE === true) {
 //print_r($_SESSION);
 //echo '</div>';
 ?>
-    <div id="page">        
-	    <a id="header-link" href="<?php echo APP_BASE_URL; ?>" style="text-decoration: none;">
-	    <div id="header">
-	        <div id="app-title">
-                <?php echo APP_TITLE ;?>
-                <span><?php echo APP_CAPTION ;?></span>
+    <!--<div id="page">-->
+    <div id="page">   
+        <div id="header-wrapper">    
+	        <a id="header-link" href="<?php echo APP_BASE_URL; ?>" style="text-decoration: none;">
+	        <div id="header">
+	            <div id="app-title">
+                    <?php echo APP_TITLE ;?>
+                    <span><?php echo APP_CAPTION ;?></span>
+	            </div>
 	        </div>
-	    </div>
-	    </a>
+	        </a>
+        </div>
         <div id="content">

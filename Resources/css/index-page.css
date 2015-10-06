@@ -131,10 +131,29 @@ ul li {
 /* The wrapper for the cyfe dashboard that is selected (initially hidden until one is chosen) */
 #cyfe-display {
     display: none;
-    max-height: 80%;
-    max-width: 80%;
 }
 
 #back-button {
     margin-top: 0.5em;
+    position: absolute;
+    top: 6em;
+    left: 3em;
 }
+
+#cyfe-iframe {
+    width: 100%;
+    left: 0;
+    height: 100vh;
+}
+
+.page {
+    width: 900px;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+
+/*#content {
+    -moz-box-shadow: 0 0 7px 1px black;
+    -webkit-box-shadow: 0 0 7px 1px black;
+    box-shadow: 0 0 7px 1px black;
+}*/
