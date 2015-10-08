@@ -47,7 +47,9 @@ if (DEVELOPMENT_MODE === true) {
 }
 ?>
 
-    <script src="<?php echo APP_RESOURCE_PATH ;?>js/jquery-1.11.2.min.js"></script>
+    <!--<script src="<?php //echo APP_RESOURCE_PATH ;?>js/jquery-1.11.2.min.js"></script>-->
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <?php
 // load up javascript
 foreach ($js as $link) {
@@ -61,6 +63,11 @@ if (DEVELOPMENT_MODE === true) {
         <!--[if lt IE 9]>
 		    <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	    <![endif]-->
+
+
+        <!-- ADD IN JAVASCRIPT FOR BOOTSTRAP -->
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
 	</head>
 	<body>
         <div id="bg">

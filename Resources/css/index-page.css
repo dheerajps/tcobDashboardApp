@@ -68,14 +68,11 @@ li a.topic-buttons.nav-buttons {
 }
 
 /* Buttons for Sections with Section names */
-li a.section-buttons.nav-buttons {
-    background-color: #F3F3F3;
-    border-top: 1px solid #979797;
-    border-bottom: 1px solid #979797;
+div a.section-buttons.nav-buttons {
     width: 100%;
-    color: #565656;
+    color: #565656 !important;
     font-size: 18px;
-    padding: .2em;
+    padding: .4em .4em;
     border-radius: 0;
     margin-bottom: -1px;
     outline: none;
@@ -83,6 +80,7 @@ li a.section-buttons.nav-buttons {
     -ms-text-overflow: ellipsis;
     -o-text-overflow: ellipsis;
     text-overflow: ellipsis;
+    border: none;
 }
 
 /* When you hover over a topic button */
@@ -92,9 +90,8 @@ li a.topic-buttons.nav-buttons:hover {
 }
 
 /* When you hover over a section button */
-li a.section-buttons.nav-buttons:hover {
+div a.section-buttons.nav-buttons:hover {
     background-color: #E6E5E5;
-    color: black !important;
 }
 
 /* When a Topic is selected, the colors don't change, otherwise bootstrap tries to replace with its own styling */
@@ -129,11 +126,15 @@ ul li {
     color: black !important;
 }
 
+/* Changes the padding for the body of the panels which contain the dashboards */
+.panel-collapse > .panel-body {
+    padding: 0;
+}
+
 /* Centers the "no topics" div in the right div */
 #no-topics {
-    margin-top: 3em;
-    margin-right: 4.5em;
-    margin-left: 4.5em;
+    margin: 3em auto;
+    max-width: 20em;
 }
 
 /* The wrapper for the cyfe dashboard that is selected (initially hidden until one is chosen) */
@@ -160,8 +161,6 @@ ul li {
     margin-top: 10px;
 }
 
-/*#content {
-    -moz-box-shadow: 0 0 7px 1px black;
-    -webkit-box-shadow: 0 0 7px 1px black;
-    box-shadow: 0 0 7px 1px black;
-}*/
+.panel.panel-default .panel-heading {
+    padding: 0;
+}

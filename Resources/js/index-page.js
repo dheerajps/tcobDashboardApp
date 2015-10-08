@@ -30,56 +30,45 @@ $(document).on('click', ".btn.topic-buttons.nav-buttons", function (event) {
     $('#sections-list').css('margin-top', (topPosition - topOffset));
 });
 
-/* 
- * When you select a section from the menu...
- * 
- * TO CHANGE: After data is loaded dynamically, populate each section, DO NOT erase the data, just show/hide all of the data instead.  Will make it much faster
- */
-$(document).on('click', '.btn.nav-buttons.section-buttons', function (event) {
-    // Dummy data to be appended and act like the dynamic data that we will use in the end
-    // TO CHANGE: Will remove dummy data after data is loaded dynamically 
-    var html = "<ul class='nav nav-pills nav-stacked dashboards'>"+
-                    "<li role='presentation' class='dashboard-button'><a href='#'>This one</a></li>"+
-                    "<li role='presentation' class='dashboard-button'><a href='#'>That one</a></li>" +
-                    "<li role='presentation' class='dashboard-button'><a href='#'>Those ones</a></li>" +
-                    "<li role='presentation' class='dashboard-button'><a href='#'>These ones</a></li>" +
-                "</ul>";
-
-    // TO CHANGE: Remove this after data is loaded dynamically, since it will just be showing what is already there, NOTTTT appending it 
-    $(event.target).closest('.nav-buttons-wrapper').find('.section-buttons').nextAll().remove();
-
-    // Append the dummy data to the current section, (accordion style) and hide any dashboards that are open in other sections
-    $(event.target).closest('.nav-buttons-wrapper').append(html);
-    $(event.target).closest('.nav-buttons-wrapper').siblings().find('a').nextAll().remove();
-
-    // Moves some bottom borders around just for styling purposes, this is so the dashboards appear to belong in the currently selected section
-    $(event.target).closest('.nav-buttons-wrapper').css('border-bottom', '1px solid #979797');
-    $(event.target).css('border-bottom', 'none');
-    $(event.target).closest('.nav-buttons-wrapper').siblings().css('border-bottom', 'none');
-    $(event.target).closest('.nav-buttons-wrapper').siblings().find('a.section-buttons').css('border-bottom', '1px solid #979797');
-});
-
-$(document).on('click', 'li .dashboard-button', function () {
+$(document).on('click', 'li.dashboard-button', function () {
     var backButton = "<button type='button' id='back-button'>Back</button>";
     $("#cyfe-iframe").attr('src', 'https://app.cyfe.com/dashboards/682/4f1e480ccb8cf101202552286564');
     $("#menu-nav").hide();
-    $("#header").before(backButton);
+    $("#header-link").before(backButton);
     $("#cyfe-display").fadeIn();
+    $('#content').css('background-color', '#333');
 
     //Change the page around
     $('#page').attr('id', 'hidden-page');
     //$('#logout').addClass('page');
     $('#header-wrapper').addClass('page');
+
+    //Store the current settings into sessionstorage
 });
 
-$(document).on('click', '#back-button', function () {
+$(document).on('click', '#back-button', function (event) {
+    event.stopPropagation();
     $('#back-button').remove();
     $("#cyfe-display").hide();
     $("#menu-nav").css('display', 'block');
     $("#cyfe-iframe").attr('src', '');
+    $('#content').css('background-color', '#fff');
 
     //Change the page back to normal template
     $('#hidden-page').attr('id', 'page');
     //$('#logout').removeClass('page');
     $('#header-wrapper').removeClass('page');
 });
+
+function clickCounter() {
+    if (typeof (Storage) !== "undefined") {
+        if (sessionStorage.clickcount) {
+            sessionStorage.clickcount = Number(sessionStorage.clickcount) + 1;
+        } else {
+            sessionStorage.clickcount = 1;
+        }
+        document.getElementById("result").innerHTML = "You have clicked the button " + sessionStorage.clickcount + " time(s) in this session.";
+    } else {
+        document.getElementById("result").innerHTML = "Sorry, your browser does not support web storage...";
+    }
+}

@@ -50,12 +50,39 @@ TSTemplate::header(array(
             <div id="no-topics" class="well">
                 <h5>Select a topic from the list on the left in order to show a list of sections</h5>
             </div>
-            <div class="dashboard-sections-wrapper">
-                <ul class="nav nav-pills nav-stacked dashboard-sections">
-                    <li class="nav-buttons-wrapper"><a class="nav-buttons btn section-buttons" title="Section 1">Section 1</a></li>
-                    <li class="nav-buttons-wrapper"><a class="nav-buttons btn section-buttons" title="Section 2">Section 2</a></li>
-                    <li class="nav-buttons-wrapper"><a class="nav-buttons btn section-buttons" title="Section 3 this is going to be a very long name to test things out">Section 3 this is going to be a very long name to test things out</a></li>
-                </ul>
+            <div class="dashboard-sections-wrapper panel-group" id="accordion">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#Section1" class="nav-buttons btn section-buttons panel-title" title="Section 1">Section 1 is going to be very long to check that the ellipsis thing is working</a>
+                    </div>
+                    <div id="Section1" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <ul class='nav nav-pills nav-stacked dashboards'>
+                                <li role='presentation' class='dashboard-button'><a href='#'>This one</a></li>
+                                <li role='presentation' class='dashboard-button'><a href='#'>That one</a></li>
+                                <li role='presentation' class='dashboard-button'><a href='#'>These ones</a></li>
+                                <li role='presentation' class='dashboard-button'><a href='#'>Those one</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a role="button" class="nav-buttons btn section-buttons" title="Section 2" data-toggle="collapse" data-parent="#accordion" href="#Section2">Section 2</a>
+                        </h4>
+                    </div>
+                    <div id="Section2" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <ul class='nav nav-pills nav-stacked dashboards'>
+                                <li role='presentation' class='dashboard-button'><a href='#'>This one</a></li>
+                                <li role='presentation' class='dashboard-button'><a href='#'>That one</a></li>
+                                <li role='presentation' class='dashboard-button'><a href='#'>These ones</a></li>
+                                <li role='presentation' class='dashboard-button'><a href='#'>Those one</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
