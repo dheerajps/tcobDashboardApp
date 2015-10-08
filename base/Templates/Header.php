@@ -61,6 +61,11 @@ if (DEVELOPMENT_MODE === true) {
         <!--[if lt IE 9]>
 		    <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	    <![endif]-->
+
+
+        <!-- ADD IN JAVASCRIPT FOR BOOTSTRAP -->
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
 	</head>
 	<body>
         <div id="bg">
