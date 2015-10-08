@@ -61,6 +61,10 @@ li a.topic-buttons.nav-buttons {
     border-radius: 0;
     margin-bottom: -1px;
     outline: none;
+    overflow: hidden;
+    -ms-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
 }
 
 /* Buttons for Sections with Section names */
@@ -75,6 +79,10 @@ li a.section-buttons.nav-buttons {
     border-radius: 0;
     margin-bottom: -1px;
     outline: none;
+    overflow: hidden;
+    -ms-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
 }
 
 /* When you hover over a topic button */

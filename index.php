@@ -30,16 +30,16 @@ TSTemplate::header(array(
                 <h2> Dashboard Topics </h2>
             </div>
             <ul class="nav nav-pills nav-stacked" id="dashboard-topics">
-                <li class="nav-buttons-wrapper"><a class="nav-buttons btn topic-buttons">Strategic Initiative</a></li>
-                <li class="nav-buttons-wrapper"><a class="nav-buttons btn topic-buttons">Business Things</a></li>
-                <li class="nav-buttons-wrapper"><a class="nav-buttons btn topic-buttons">Other Business</a></li>
-                <li class="nav-buttons-wrapper"><a class="nav-buttons btn topic-buttons">This one Topic</a></li>
-                <li class="nav-buttons-wrapper"><a class="nav-buttons btn topic-buttons">This is Another One</a></li>
-                <li class="nav-buttons-wrapper"><a class="nav-buttons btn topic-buttons">Wow look Another One</a></li><li class="nav-buttons-wrapper"><a class="nav-buttons btn topic-buttons">Strategic Initiative</a></li>
-                <li class="nav-buttons-wrapper"><a class="nav-buttons btn topic-buttons">So Many Topics</a></li>
-                <li class="nav-buttons-wrapper"><a class="nav-buttons btn topic-buttons">This is Just Crazy</a></li><li class="nav-buttons-wrapper"><a class="nav-buttons btn topic-buttons">Strategic Initiative</a></li>
-                <li class="nav-buttons-wrapper"><a class="nav-buttons btn topic-buttons">I don't have names</a></li>
-                <li class="nav-buttons-wrapper"><a class="nav-buttons btn topic-buttons">This is the Last One</a></li>
+                <li class="nav-buttons-wrapper"><a class="nav-buttons btn topic-buttons" title="example">Strategic Initiative</a></li>
+                <li class="nav-buttons-wrapper"><a class="nav-buttons btn topic-buttons" title="example">Business Things</a></li>
+                <li class="nav-buttons-wrapper"><a class="nav-buttons btn topic-buttons" title="example">Other Business</a></li>
+                <li class="nav-buttons-wrapper"><a class="nav-buttons btn topic-buttons" title="example">This one Topic</a></li>
+                <li class="nav-buttons-wrapper"><a class="nav-buttons btn topic-buttons" title="example">This is Another One</a></li>
+                <li class="nav-buttons-wrapper"><a class="nav-buttons btn topic-buttons" title="example">Wow look Another One</a></li><li class="nav-buttons-wrapper"><a class="nav-buttons btn topic-buttons">Strategic Initiative</a></li>
+                <li class="nav-buttons-wrapper"><a class="nav-buttons btn topic-buttons" title="example">So Many Topics</a></li>
+                <li class="nav-buttons-wrapper"><a class="nav-buttons btn topic-buttons" title="example">This is Just Crazy</a></li><li class="nav-buttons-wrapper"><a class="nav-buttons btn topic-buttons">Strategic Initiative</a></li>
+                <li class="nav-buttons-wrapper"><a class="nav-buttons btn topic-buttons" title="example">I don't have names</a></li>
+                <li class="nav-buttons-wrapper"><a class="nav-buttons btn topic-buttons" title="This is the Last One but it is going to be really long to check things">This is the Last One but it is going to be really long to check things</a></li>
             </ul>
         </div>
         <div id="sections-list" class="col-md-6 col-xs-6 dashboard-wrapper">
@@ -52,9 +52,9 @@ TSTemplate::header(array(
             </div>
             <div class="dashboard-sections-wrapper">
                 <ul class="nav nav-pills nav-stacked dashboard-sections">
-                    <li class="nav-buttons-wrapper"><a class="nav-buttons btn section-buttons">Section 1</a></li>
-                    <li class="nav-buttons-wrapper"><a class="nav-buttons btn section-buttons">Section 2</a></li>
-                    <li class="nav-buttons-wrapper"><a class="nav-buttons btn section-buttons">Section 3</a></li>
+                    <li class="nav-buttons-wrapper"><a class="nav-buttons btn section-buttons" title="Section 1">Section 1</a></li>
+                    <li class="nav-buttons-wrapper"><a class="nav-buttons btn section-buttons" title="Section 2">Section 2</a></li>
+                    <li class="nav-buttons-wrapper"><a class="nav-buttons btn section-buttons" title="Section 3 this is going to be a very long name to test things out">Section 3 this is going to be a very long name to test things out</a></li>
                 </ul>
             </div>
         </div>
