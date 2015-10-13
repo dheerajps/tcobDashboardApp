@@ -17,6 +17,8 @@ $(document).on('click', ".btn.topic-buttons.nav-buttons", function (event) {
 
     if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
         $('#accordion').insertAfter($(event.target));
+
+        // Fix this
         $(event.target)
     }
     else {
