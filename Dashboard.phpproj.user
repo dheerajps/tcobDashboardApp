@@ -8,5 +8,6 @@
     <PHPDebugging>True</PHPDebugging>
     <JsDebugging>False</JsDebugging>
     <SilverlightDebugging>False</SilverlightDebugging>
+    <NameOfLastUsedPublishProfile>test</NameOfLastUsedPublishProfile>
   </PropertyGroup>
 </Project>

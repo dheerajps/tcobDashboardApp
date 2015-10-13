@@ -1,0 +1,9 @@
+﻿#environment {
+    background-color: #900;
+    color: #fff;
+    /*height: 10px;*/
+    padding: 10px;
+    margin: 0;
+    display: block;
+    text-align: center;
+}

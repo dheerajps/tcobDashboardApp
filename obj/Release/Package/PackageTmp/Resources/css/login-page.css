@@ -1,0 +1,5 @@
+input[type=text],input[type=password]{ min-width: 100px; max-width: 200px;}
+input[type=submit] {display: block;}
+#content label {
+width: 90px;
+}

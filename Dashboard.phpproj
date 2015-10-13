@@ -40,7 +40,6 @@
     <Compile Include="Libs\DashboardHelper.php" />
     <Compile Include="Pages\login.php" />
     <Compile Include="Pages\logout.php" />
-    <Compile Include="Pages\index.php" />
     <Compile Include="Resources\css\index-page.css" />
     <Compile Include="Services\GetDashboard.php" />
     <Compile Include="Test.php" />
@@ -53,6 +52,7 @@
     <Folder Include="Base\Templates\" />
     <Folder Include="Libs\" />
     <Folder Include="Pages\" />
+    <Folder Include="Properties\PublishProfiles\" />
     <Folder Include="Services\" />
     <Folder Include="Resources\" />
     <Folder Include="Properties\" />
@@ -61,6 +61,7 @@
     <Folder Include="Resources\css\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Properties\PublishProfiles\test.pubxml" />
     <Content Include="README.md" />
     <Content Include="Resources\css\app.css" />
     <Content Include="Resources\css\app.min.css" />
