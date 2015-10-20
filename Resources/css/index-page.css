@@ -1,13 +1,9 @@
-/* Each div which takes of half of the content div, the outer most div underneath the breadcrumbs */
+/* Each div which takes of half of the content div, the outer most div underneath the breadcrumbs 
+   --- Changes bootstrap default css 
+*/
 .dashboard-wrapper {
     padding-left: 0;
     padding-right: 0;
-}
-
-/* The Title for Topics which appear above the list of topics */
-.dashboard-banner {
-    margin: 0;
-    text-align: center;
 }
 
 /* The actual list of Topics which hold sections */
@@ -28,11 +24,6 @@
     display: none;
 }
 
-/* Spaces out all of the section names out JUST a little bit*/
-.dashboard-sections li:not(:first-child) {
-    margin-top: 0.25em;
-}
-
 /* A div that holds the list of section names and dashboards */
 .dashboard-sections-wrapper {
     padding: 25px;
@@ -45,7 +36,7 @@
     margin-bottom: 0.5em;
 }
 
-/* A class literally just to add styling to topic buttons via jQuery */
+/* puts a right border on all the topic buttons that AREN'T selected just to look cool */
 .right-wall-topic-menu {
     border-right: 1px solid #979797
 }
@@ -86,9 +77,8 @@ li a.topic-buttons.nav-buttons {
 
 /* When you hover over a topic button */
 li a.topic-buttons.nav-buttons:hover {
-    background-color: #C5C5C5;
+    background-color: #A7A7A7;
     color: #f1b82d !important;
-    text-shadow: 1px 0 #6F6F6F,0 -1px #6F6F6F,-1px 0 #6F6F6F, 0 1px #6F6F6F;
 }
 
 /* When you hover over a section button */
@@ -102,7 +92,7 @@ div a.section-buttons.nav-buttons:hover {
     background-color: white;
 }
 
-/* Fixes background issues */
+/* Fixes background issues with mobile devices */
 #dashboard-topics .nav-buttons-wrapper.active a.nav-buttons.section-buttons.btn {
     background-color: transparent;
 }
@@ -118,7 +108,7 @@ ul li {
     padding-bottom: 0 !important;
 }
 
-/* Fixes stupid bootstrap styling  */
+/* Fixes stupid bootstrap styling */
 .dashboards li:first-child {
     margin-left: 0;
 }
@@ -150,47 +140,78 @@ ul li {
     margin-top: 1.2em;
 }
 
-/*#back-button {
-    margin-top: 0.5em;
-    position: absolute;
-    top: 7.75em;
-    left: 0;
-}*/
-
+/* The actual content of the dashboard from the URL */
 #cyfe-iframe {
     width: 100%;
     left: 0;
     height: 100vh;
 }
 
+/* This is very hacky, I took the css from the ID of "page" and made classes, since it restricts the 
+    width of the content in it, I didn't want to put the dashboard in the page, but I was forced to because the "page" 
+    div contains the header, footer, and content.  So, in avoiding to use an absoulte div, I removed the "page" id and simply put 
+    a copy of the css on everything surrounding the dashboard, but not the dashboard itself.  If you want to see where I do this, 
+    check out my javascript, I add and remove "page" classes when you select a dashboard and/or hit the back button.  
+*/
 .page {
     width: 900px;
     margin: 0 auto;
     margin-top: 10px;
 }
 
+/* The buttons for sections within topics */
 .panel.panel-default .panel-heading {
     padding: 0;
 }
 
+/* When you hover over the back button on a dashboard */
+#content #back-button:hover {
+    background-color: #ea0 !important;
+}
+
+/* To prevent bootstrap from being dumb... */
+.container {
+    padding: 0 !important;
+}
+
+/* For Mobile Devices, change a lot of the css to make it look awesome on these devices */
 @media screen and (max-width: 44em) {
     #header-wrapper {
         width: 100% !important;
     }
     #content {
+        padding: 1em;
         padding-top: 0;
         padding-bottom: 2em;
     }
     #cyfe-display {
         padding-right: 0;
         padding-left: 0;
-    }
-    .dashboard-selections-wrapper {
+        margin-top: 1em;
 
     }
-}
+    #accordion {
+        margin-top: 0;
+        padding-top: 1em;
+        padding-bottom: 1em;
+        border-top: none;
+    }
+    #back-button {
+        height: 2.25em;
+        width: 4em;
+        padding: 0.1em;
+        margin-top: 1em;
+    }
+    #app-title {
+        padding-left: 0.5em;
+    }
+    #header {
+        border-bottom: solid white 1px;
+    }
 
-/* To prevent bootstrap from being dumb... */
-.container {
-    padding: 0 !important;
+    li a.topic-buttons.nav-buttons:hover {
+        background-color: #DADADA;
+        color: black !important;
+        text-shadow: none;
+    }
 }

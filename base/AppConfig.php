@@ -2,6 +2,9 @@
 /* use this to control when you want special behavior for dev mode */
 define( 'DEVELOPMENT_MODE' , true );  
 
+/* Test environment */
+define ('TEST_MODE', false);
+
 /* this key is used to explicitly determine that the session
 that the webserver has, is for this application, upon login
 set the $_SESSION[APP_SECRET]=true; */
@@ -14,8 +17,11 @@ define( 'RSCACCTPASS'       , 'Bu51n355'                 ); /* account password 
 define( 'DEFAULT_PROTOCOL'  , 'http'                     ); /* default to HTTPS or HTTP */
 define( 'REQUIRE_SSL'       , false ); /* default to opposite of dev mode setting */
 if (DEVELOPMENT_MODE === true) {
-    if (TEST_MODE)
-    define( 'APP_BASE_URL'      , '//apps-dev.business.missouri.edu/tps9tb/tcob-dashboard'); //'//localhost:46246/'); /* root of app url */
+    if (TEST_MODE === true) {
+        define( 'APP_BASE_URL'      , '//apps-dev.business.missouri.edu/tps9tb/tcob-dashboard/'); /* root of app url */
+    } else {
+        define( 'APP_BASE_URL'      , '//localhost:46246/'); /* root of app url */
+    }
 } else {
     define( 'APP_BASE_URL'      , '//apps.business.missouri.edu/dashboard/'); /* root of app url */
 }

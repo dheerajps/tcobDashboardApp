@@ -61,7 +61,7 @@
     <Folder Include="Resources\css\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Properties\PublishProfiles\test.pubxml" />
+    <None Include="Properties\PublishProfiles\COB-WEBDEV.pubxml" />
     <Content Include="README.md" />
     <Content Include="Resources\css\app.css" />
     <Content Include="Resources\css\app.min.css" />

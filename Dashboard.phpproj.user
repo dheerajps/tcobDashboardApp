@@ -8,6 +8,6 @@
     <PHPDebugging>True</PHPDebugging>
     <JsDebugging>False</JsDebugging>
     <SilverlightDebugging>False</SilverlightDebugging>
-    <NameOfLastUsedPublishProfile>test</NameOfLastUsedPublishProfile>
+    <NameOfLastUsedPublishProfile>COB-WEBDEV</NameOfLastUsedPublishProfile>
   </PropertyGroup>
 </Project>

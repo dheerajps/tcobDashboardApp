@@ -12,23 +12,8 @@ TSTemplate::header(array(
 ));
 ?>
 
-
-<!--<div id="breadcrumb">
-    <ul class="crumbs2">
-        <li class="first"><a href="#" style="z-index:9;"><span></span>Home</a></li>
-        <li><a href="/Archive.php" style="z-index:9;">Archive </a></li>
-        <li><a href="#" style="z-index:7;">2011 Writing</a></li>
-        <li><a href="#" style="z-index:6;">Tips for jQuery Development in HTML5</a></li>
-    </ul>
-</div>-->
-
-
     <div class="row" id="menu-nav">
         <div class="col-md-6 col-xs-12 dashboard-wrapper">
-            <div class="row dashboard-banner">
-                <br>
-                <h2> Dashboard Topics </h2>
-            </div>
             <ul class="nav nav-pills nav-stacked" id="dashboard-topics">
                 <li class="nav-buttons-wrapper"><a class="nav-buttons btn topic-buttons" title="example">Strategic Initiative</a></li>
                 <li class="nav-buttons-wrapper"><a class="nav-buttons btn topic-buttons" title="example">Business Things</a></li>
@@ -43,12 +28,8 @@ TSTemplate::header(array(
             </ul>
         </div>
         <div id="sections-list" class="col-md-6 col-xs-12 dashboard-wrapper">
-            <div class="row dashboard-banner">
-                <br>
-                <h2> Section Topics </h2>
-            </div>
             <div id="no-topics" class="well">
-                <h5>Select a topic from the list on the left in order to show a list of sections</h5>
+                <h5>Select a topic from the list in order to show a list of sections</h5>
             </div>
             <div class="dashboard-sections-wrapper panel-group" id="accordion">
                 <?php
@@ -72,11 +53,9 @@ TSTemplate::header(array(
             </div>
         </div>
     </div>
-    <!-- TO DO: Add a loading spinner for when the AJAX call is processing -->
-    <div id="cyfe-display" class="col-md-12 col-xs-12"><iframe id="cyfe-iframe"></iframe></div>
-
-
-
+    <div id="cyfe-display" class="col-md-12 col-xs-12">
+        <iframe id="cyfe-iframe"></iframe>
+    </div>
 
 <?php
 TSTemplate::footer();
