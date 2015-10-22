@@ -214,4 +214,7 @@ ul li {
         color: black !important;
         text-shadow: none;
     }
+    .dashboard-sections-wrapper {
+        border-top: none;
+    }
 }
