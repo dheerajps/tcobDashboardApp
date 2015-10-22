@@ -11,7 +11,6 @@ TSTemplate::header(array(
     'style.css'
 ));
 ?>
-
     <div class="row" id="menu-nav">
         <div class="col-md-6 col-sm-6 col-xs-12 dashboard-wrapper">
             <ul class="nav nav-pills nav-stacked" id="dashboard-topics">
