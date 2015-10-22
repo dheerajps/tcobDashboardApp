@@ -37,7 +37,7 @@ $(document).on('click', ".btn.topic-buttons.nav-buttons", function (event) {
 
     console.log(ems);
     // If the user is on a mobile device OR tablet????????????????????????????
-    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || ems <= 44 || $(event.target).closest('.dashboard-wrapper').hasClass('col-xs-12')) { // USE 44 because that's the media query size used in the css file... this could be better utilized
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || ems <= 44 /*|| $(event.target).closest('.dashboard-wrapper').hasClass('col-xs-12')*/) { // USE 44 because that's the media query size used in the css file... this could be better utilized
         $('#accordion').insertAfter($(event.target));
     } else {
         // TO CHANGE: Show the specfic div for that topic, still fade it in each time, but find a way to distinguish a topic's section div from others, and hide the others
