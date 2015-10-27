@@ -26,7 +26,7 @@ TSTemplate::header(array(
                 <li class="nav-buttons-wrapper"><a class="nav-buttons btn topic-buttons" title="This is the Last One but it is going to be really long to check things">This is the Last One but it is going to be really long to check things</a></li>
             </ul>
         </div>
-        <div id="sections-list" class="col-md-6 col-sm-6 col-xs-12 dashboard-wrapper">
+        <div id="sections-list strategic-initiative" class="col-md-6 col-sm-6 col-xs-12 dashboard-wrapper">
             <div id="no-topics" class="well">
                 <h5>Select a topic from the list in order to show a list of sections</h5>
             </div>

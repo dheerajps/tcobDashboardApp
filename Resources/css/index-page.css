@@ -175,7 +175,7 @@ ul li {
 }
 
 /* For Mobile Devices, change a lot of the css to make it look awesome on these devices */
-@media screen and (max-width: 44em) {
+@media screen and (max-width: 749px) {
     #header-wrapper {
         width: 100% !important;
     }
