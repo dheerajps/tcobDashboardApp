@@ -2,7 +2,7 @@
 
 define('LDAP_SERVER', 'col.missouri.edu'); // ldap server
 
-
+/*
 function GetPawprintFromName($name) {
     $ldap_connection = ldap_connect(LDAP_SERVER,3268);
     ldap_set_option($ldap_connection,LDAP_OPT_PROTOCOL_VERSION, 3);
@@ -15,7 +15,7 @@ function GetPawprintFromName($name) {
     //$memberof = $attrs['memberOf'];
     return $attrs['sAMAccountName'][0];//0 is always pawprint
 }
-
+*/
 
 function GetUserVerified($pawprint,$password) {
 
@@ -45,7 +45,8 @@ function GetUserVerified($pawprint,$password) {
 	ldap_close($ldap_connection);
 	return $accepted;
 }
-
+// Actually even this is not used by our project.
+/*
 function GetRealName($pawprint) {
 	//connect and configure ldap
 	$ldap_connection = ldap_connect(LDAP_SERVER,3268);
@@ -64,6 +65,7 @@ function GetRealName($pawprint) {
     $name = $name[0];
     return $name;
 }
+*/
 
 function AssignUserGroups($pawprint)
 {
@@ -99,6 +101,10 @@ function AssignUserGroups($pawprint)
     return $member_array;
 }
 
+
+// THIS PART IS NOT USED BY DASHBOARD PROJECT
+
+/*
 function getAllFacStaffPhdUsers() {
     $ldapc = ldap_connect(LDAP_SERVER,3268);	
     ldap_bind($ldapc,RSCACCTSSO.'@col.missouri.edu',RSCACCTPASS);
@@ -161,7 +167,7 @@ function getAllGroupsNames($ldap_connection,$distinguishedName, $type){
         return $newarray;  
     }
 }
-
+*/
 function flattenArray($array){
     $arrayValues = array();
     foreach ($array as $value){

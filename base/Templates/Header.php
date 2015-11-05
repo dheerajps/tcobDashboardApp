@@ -69,7 +69,7 @@ if (DEVELOPMENT_MODE === true) {
 	</head>
 	<body>
         <div id="bg">
-            <img src="<?php echo APP_BASE_URL; ?>Resources/images/bg/bg.jpg" alt="Page Background" />
+            <!--<img src="<?php echo APP_BASE_URL; ?>Resources/images/bg/bg.jpg" alt="Page Background" />-->
         </div>
 <?php
 //echo '<div class="debug">SESSION [' . session_id() . ']: ';

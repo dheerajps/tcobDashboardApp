@@ -305,7 +305,7 @@ h2 {
 #logout a:link, #logout a:visited {
     color: #666;
     text-decoration: none;
-    background: url('../images/logout.svg') left no-repeat;
+    /*background: url('../images/logout.svg') left no-repeat;*/
     padding-left: 22px;
     background-size: 20px 20px;
 }

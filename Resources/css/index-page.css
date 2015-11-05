@@ -15,21 +15,11 @@
     margin-top: 1em;
 }
 
-/* The actual list of Section names which hold dashboards */
-.dashboard-sections {
-    list-style: none;
-    margin-left: 0;
-    width: 100%;
-    padding-bottom: 0;
-    display: none;
-}
-
 /* A div that holds the list of section names and dashboards */
 .dashboard-sections-wrapper {
     padding: 25px;
     background-color: white;
     margin-top: 1em;
-    display: none;
     border-top: 1px solid #979797;
     border-bottom: 1px solid #979797;
     /* Prevents stupid bootstrap stuff */
@@ -60,7 +50,7 @@ li a.topic-buttons.nav-buttons {
 }
 
 /* Buttons for Sections with Section names */
-#accordion .panel .panel-heading a.section-buttons.nav-buttons.btn {
+.accordion .panel .panel-heading a.section-buttons.nav-buttons.btn {
     width: 100%;
     color: #565656 !important;
     font-size: 18px;
@@ -174,6 +164,10 @@ ul li {
     padding: 0 !important;
 }
 
+.dashboard-sections-wrapper-wrapper {
+    display: none;
+}
+
 /* For Mobile Devices, change a lot of the css to make it look awesome on these devices */
 @media screen and (max-width: 749px) {
     #header-wrapper {
@@ -190,7 +184,7 @@ ul li {
         margin-top: 1em;
 
     }
-    #accordion {
+    .accordion {
         margin-top: 0;
         padding-top: 1em;
         padding-bottom: 1em;
@@ -217,4 +211,5 @@ ul li {
     .dashboard-sections-wrapper {
         border-top: none;
     }
+
 }

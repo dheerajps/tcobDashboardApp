@@ -24,9 +24,10 @@ class DashboardHelper {
 
             $userGroups = AssignUserGroups($username);
             $dashboardArray = DashboardHelper::getUrls($userGroups);
-
+            
+            
             //If no viewable dashboards, return 2
-            if(empty($dashboardArray)){
+            if(empty($dashboardArray[0])){
                 return 2;
             }
 
@@ -36,9 +37,9 @@ class DashboardHelper {
             else{
                 session_regenerate_id(true);
                 $_SESSION['pawprint'] = $username; /* to easily id the user    */
-                $_SESSION['name']     = GetRealName($username); /* display name of the user */
+                //$_SESSION['name']     = GetRealName($username); /* display name of the user */
                 $_SESSION['SECRET'] = APP_SECRET;
-                $_SESSION['ACCESS'] == 'ACCESS';
+                $_SESSION['ACCESS'] = 'ACCESS';
                 $_SESSION['DASHBOARDS'] = $dashboardArray;
                 return 0; //return 0
             }
@@ -115,7 +116,7 @@ class DashboardHelper {
          */
         $result = $connect->executeStoredProcedure($procedure, [$in_str]);
 
-        return json_encode($result);
+        return $result;
     }
 
 }

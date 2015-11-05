@@ -86,26 +86,14 @@ class DatabaseHelper {
 
         /* process the queries out into arrays */
         $fullDataSet = array();
-        $curQuery    = array();
 
         /* first query */
-        while( $row = sqlsrv_fetch_array( $statement ) )  {
-            array_push( $curQuery, $row );
+        while( $row = sqlsrv_fetch_object( $statement ) )  {
+            array_push( $fullDataSet, $row );
         }
-        array_push( $fullDataSet,$curQuery );
 
-        /* rest of queries */
-        while ( sqlsrv_next_result( $statement ) ) {
-            /* reset curQuery */
-            $curQuery = array();
-            while( $row = sqlsrv_fetch_array( $statement ) ) {
-                array_push( $curQuery,$row );
-            }
-            /* add query to collection */
-            array_push( $fullDataSet,$curQuery );
-        }
         /* cleanup statement */
-        sqlsrv_free_stmt($statement);
+    sqlsrv_free_stmt($statement);
 
         /* done */
         return $fullDataSet;
