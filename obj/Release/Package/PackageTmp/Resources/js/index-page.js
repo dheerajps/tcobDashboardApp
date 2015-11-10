@@ -21,6 +21,9 @@ $(document).on('click', ".btn.topic-buttons.nav-buttons", function (event) {
 
     // If you select the topic that is already selected
     if ($(event.target).closest(".nav-buttons-wrapper").hasClass("active")) {
+        // Add the sections list back to the list at the bottom
+        $("#sections-list").append($("#" + convertNameToId($(document).find(".active .topic-buttons").text())));
+
         $(event.target).closest(".nav-buttons-wrapper").removeClass("active");
         $('.dashboard-sections-wrapper-wrapper').hide();
         $('#no-topics').show();
@@ -31,11 +34,12 @@ $(document).on('click', ".btn.topic-buttons.nav-buttons", function (event) {
         }
         return;
     } else {
-        $("#" + convertNameToId($(document).find(".active a").text())).hide();
+        $("#" + convertNameToId($(document).find(".active topic-buttons").text())).hide();
         $("#" + sectionToShow).show(); // Shows the div containing the list of sections instead of the message
 
         if (isMobile) { // USE 750 because that's the media query size used in the css file, and how bootstrap does their col-xs classes
-            $("#sections-list").insertAfter($(event.target));
+            $("#sections-list").append($("#" + convertNameToId($(document).find(".active .topic-buttons").text())));
+            $("#" + sectionToShow).insertAfter($(event.target));
         } else {
             //Position the sections-list div to the right vertical height to match the selected topic
             $('#sections-list').css('margin-top', (topPosition - topOffset));

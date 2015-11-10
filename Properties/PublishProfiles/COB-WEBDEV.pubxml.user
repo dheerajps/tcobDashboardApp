@@ -157,13 +157,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/03/2015 13:44:57</publishTime>
     </File>
     <File Include="Resources/js/index-page.js">
-      <publishTime>11/10/2015 11:44:48</publishTime>
+      <publishTime>11/10/2015 12:32:52</publishTime>
     </File>
     <File Include="Resources/js/index-page.min.js">
-      <publishTime>11/10/2015 11:44:48</publishTime>
+      <publishTime>11/10/2015 12:32:52</publishTime>
     </File>
     <File Include="Resources/js/index-page.min.js.map">
-      <publishTime>11/10/2015 11:44:48</publishTime>
+      <publishTime>11/10/2015 12:32:52</publishTime>
     </File>
     <File Include="Resources/js/jquery-1.11.2.min.js">
       <publishTime>11/03/2015 13:44:57</publishTime>
