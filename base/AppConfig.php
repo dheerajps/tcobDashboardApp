@@ -3,7 +3,7 @@
 define( 'DEVELOPMENT_MODE' , true );  
 
 /* Test environment */
-define ('TEST_MODE', false);
+define ('TEST_MODE', true);
 
 /* this key is used to explicitly determine that the session
 that the webserver has, is for this application, upon login

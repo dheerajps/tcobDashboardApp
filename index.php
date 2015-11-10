@@ -6,11 +6,9 @@ TSTemplate::header(array(
     'base.min.css',
     'app.min.css',
     'login-page.min.css',
-    // DONT FORGET TO CHANGE BACK TO MINNNNNNNNN
     'index-page.min.css',
     'index-page.min.js'
 ));
-//print_r($_SESSION['DASHBOARDS']);
 
 function convertNameToId($inputText) {
     $lowerCase = strtolower($inputText);

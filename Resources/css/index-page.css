@@ -50,7 +50,7 @@ li a.topic-buttons.nav-buttons {
 }
 
 /* Buttons for Sections with Section names */
-.accordion .panel .panel-heading a.section-buttons.nav-buttons.btn {
+#dashboard-topics .dashboard-sections-wrapper-wrapper .accordion .panel .panel-heading a.section-buttons.nav-buttons.btn {
     width: 100%;
     color: #565656 !important;
     font-size: 18px;
