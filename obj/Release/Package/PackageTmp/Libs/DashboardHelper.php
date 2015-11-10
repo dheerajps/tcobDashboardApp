@@ -19,36 +19,44 @@ class DashboardHelper {
 		// login the user
 	    $passwordIsCorrect = GetUserVerified( $username, $password );
 
-        // once logged in assign permissions and other properties
+        // once password is authenticated, check if user has viewable dashboards
 	    if ($passwordIsCorrect) {
-            // invalidate previous session id
-            // session hijacking/fixation fix - regenerate session id *after* login
-            session_regenerate_id(true);
 
-	        $_SESSION['pawprint'] = $username; /* to easily id the user    */
-	        $_SESSION['name']     = GetRealName($username); /* display name of the user */
-            //$_SESSION['id']       = GetStudentId($username); // id for use with security
-	        $_SESSION['RIGHTS']   = AssignUserGroups($username); /* control pages user is allowed to view */
+            $userGroups = AssignUserGroups($username);
+            $dashboardArray = DashboardHelper::getUrls($userGroups);
+            
+            
+            //If no viewable dashboards, return 2
+            if(empty($dashboardArray[0])){
+                return 2;
+            }
 
-	        // set the session secret specific to this app, this helps prevent logins cross-app
-	        $_SESSION['SECRET'] = APP_SECRET;
-
-	        // login succeeded
-	        return true;
+            //If user has dashboards, set all the session data.
+            //Set the dashboard array to SESSION['DASHBOARDS'];
+            //Programmer can json_encode this session variable and use it to generate dashboard URLs
+            else{
+                session_regenerate_id(true);
+                $_SESSION['pawprint'] = $username; /* to easily id the user    */
+                //$_SESSION['name']     = GetRealName($username); /* display name of the user */
+                $_SESSION['SECRET'] = APP_SECRET;
+                $_SESSION['ACCESS'] = 'ACCESS';
+                $_SESSION['DASHBOARDS'] = $dashboardArray;
+                return 0; //return 0
+            }
 	    }
 
-	    // login failed
-	    return false;
+	    // login failed; return 1
+	    return 1;
 	}
 
 	// helper to direct the user to their landing page based on their rights
 	static function sendUserToDefaultPageBasedOnRightsInSession() {
 
 		$userDefaultRouteMap = array(
-			"ADMIN_RIGHTS"   => 'Admin.php',
-			"CHECKER_RIGHTS" => 'PickEvent.php',
-			"STUDENT_RIGHTS" => '../',
-			"NO_RIGHTS"      => '../',
+			//"ADMIN_RIGHTS"   => 'Admin.php',
+			//"CHECKER_RIGHTS" => 'PickEvent.php',
+			//"STUDENT_RIGHTS" => '../',
+			//"NO_RIGHTS"      => '../',
             "ACCESS"         => '../'
 			);
 
@@ -56,12 +64,12 @@ class DashboardHelper {
 		$baseOfRedirectURL = DEFAULT_PROTOCOL.":".APP_PAGES_PATH;
 
 		// TODO: test this condition
-		if ( !has_presence( $_SESSION['RIGHTS'] ) ) {
+		if ( !has_presence( $_SESSION['ACCESS'] ) ) {
 			header( 'Location: '.$baseOfRedirectURL."login.php" );
 			return;
 		} else {
             // the user rights should be set when the user logs in
-            header( 'Location: '.$baseOfRedirectURL.$userDefaultRouteMap[ $_SESSION[ 'RIGHTS' ] ] );
+            header( 'Location: '.$baseOfRedirectURL.$userDefaultRouteMap[ $_SESSION[ 'ACCESS' ] ] );
             return;
         }
 
@@ -84,6 +92,32 @@ class DashboardHelper {
 		// under regular conditions we route the user to the normal starting location based on their rights
 		DashboardHelper::sendUserToDefaultPageBasedOnRightsInSession();
 	}
+
+    /* 
+     * Function used to grab dashboards from database
+     * Takes in an array of group_ids
+     * Returns an array of database results.
+     */
+    private function getUrls($groups){
+        $connect = new DatabaseHelper; //Connect to db * TODO: What if cannot connect?
+
+        /* The name of the stored procedure being used.
+         * See /../Database Scripts/dashboardProcedures.sql
+         */
+        $procedure = "dbo.getDashboardData";
+
+        /* 
+         * Breaks up the groups array into a string to use it in the stored procedure's IN operator
+         */
+        $in_str = "'".implode("', '", $groups)."'";
+
+        /*
+         * Execute procedure. Set results equal to $result. Return that. We'll check if empty elsewhere 
+         */
+        $result = $connect->executeStoredProcedure($procedure, [$in_str]);
+
+        return $result;
+    }
 
 }
 ?>

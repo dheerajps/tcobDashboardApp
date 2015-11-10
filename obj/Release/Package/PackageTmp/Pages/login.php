@@ -3,25 +3,29 @@ require_once(__DIR__.'/../Base/Common.php');
 require_once(__DIR__.'/../Libs/DashboardHelper.php');
 
 if (has_presence($_POST['submit'])) {
-    /* the DashboardHelper logs in the user by setting up the session, if
-    the user is in no groups specific to pdp, then RIGHTS = NO_RIGHTS,
-    see DashboardHelper.php in Libs for more code */
+
+    //Call function login in DashboardHelper to process login.
+    //Will return either a 0, 1 or 2
     $loggedIn = DashboardHelper::login( $_POST['user'], $_POST['password'] );
-    if (!$loggedIn) {
-        logger('SECURITY', h($_POST['user']).' login failed');
-        header('Location: login.php?message=Invalid pawprint and password combination.');
-        exit();
+ 
+    switch($loggedIn){
+        //If function login returns a 1, redirect user back to login with Invalid pawpring msg
+        case 1:
+            header('Location: login.php?message=Invalid pawprint and password combination.');
+            break;
+        //If login returns a 2, redirect user to login with a not authorized message
+        case 2:
+            header('Location: login.php?message=User is not authorized to use this application.');
+            break;
+        //If login returns a 0, redirect user to index. 
+        case 0:
+            header('Location: ./../');
+            logger('SECURITY', h($_POST['user']).' login success');
+            break;
+        default:
+            header('Location: login.php?message=Invalid pawprint and password combination.');
+            break;
     }
-    /* NO_RIGHTS would be set in DashboardHelper::login if user has no rights */
-    else if ($_SESSION['RIGHTS'] === 'NO_RIGHTS') {
-        header('Location: login.php?message=User is unauthorized to use this application.');
-        exit();
-    }
-    
-    logger('SECURITY', h($_POST['user']).' login success');
-    
-    /* sends the user to their dash based on their rights */
-    DashboardHelper::routeUserToCorrectLocationAfterLogin();
 }
 
 // load header

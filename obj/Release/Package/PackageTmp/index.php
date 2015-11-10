@@ -1,59 +1,92 @@
 <?php
 // start app
-require_once('/Base/Common.php');
-require_once('/Libs/DashboardHelper.php');
+require_once('./Base/Common.php');
+require_once('./Libs/DashboardHelper.php');
 TSTemplate::header(array(
     'base.min.css',
     'app.min.css',
     'login-page.min.css',
+    // DONT FORGET TO CHANGE BACK TO MINNNNNNNNN
     'index-page.min.css',
-    'index-page.min.js',
-    'style.css'
+    'index-page.min.js'
 ));
-?>
+//print_r($_SESSION['DASHBOARDS']);
 
+function convertNameToId($inputText) {
+    $lowerCase = strtolower($inputText);
+    $output = str_replace(" ", "-", $lowerCase);
+    return $output;
+}
+
+function createSections($db, $topicNameArray) {
+  $allSections = array();
+    $returnString = '';
+    foreach($topicNameArray as $val){
+      $allSections[$val] = array();
+        for ($i = 0 ; $i < count($db) ; $i++){
+            if ($db[$i]->topic_name == $val) {
+                $sectionName = $db[$i]->section_name;
+                $url_name = $db[$i]->url_name;
+                $url_address = $db[$i]->url_address;
+                $allSections[$val][$sectionName][$url_name] = $url_address;             
+            }
+
+        }
+        $returnString .= "<div id='".convertNameToId($val)."' class='dashboard-sections-wrapper-wrapper'>";
+        $returnString .=  "\n\t<div class='dashboard-sections-wrapper panel-group accordion' id='".convertNameToId($val)."-accordion'>";
+        foreach($allSections[$val] as $key => $value) {
+
+            $sections = "<div class='panel panel-default'>".
+                        "<div class='panel-heading'>".
+                        "<a data-toggle='collapse' data-parent='#".convertNameToId($val)."-accordion' href='#".convertNameToId($val)."-".$key."' class='nav-buttons btn section-buttons panel-title' title='".$key."'>".$key."</a>".
+                        "</div>".
+                        "<div id='".convertNameToId($val)."-".$key."' class='panel-collapse collapse'>".
+                        "<div class='panel-body'>".
+                        "<ul class='nav nav-pills nav-stacked dashboards'>";
+            $dashboards = '';
+            $closers = "</ul></div></div></div>";
+            foreach($allSections[$val][$key] as $url_name => $values){
+                $dashboards .= "<li role='presentation' class='dashboard-button'><a href='".$values."' val='".$values."'>".$url_name."</a></li>";
+            }
+            $returnString .= $sections.$dashboards.$closers;
+        }
+        $returnString .= "</div>\n</div>";
+    }
+    return $returnString;
+}
+?>
     <div class="row" id="menu-nav">
-        <div class="col-md-6 col-xs-12 dashboard-wrapper">
+        <div class="col-md-6 col-sm-6 col-xs-12 dashboard-wrapper" id="topics">
             <ul class="nav nav-pills nav-stacked" id="dashboard-topics">
-                <li class="nav-buttons-wrapper"><a class="nav-buttons btn topic-buttons" title="example">Strategic Initiative</a></li>
-                <li class="nav-buttons-wrapper"><a class="nav-buttons btn topic-buttons" title="example">Business Things</a></li>
-                <li class="nav-buttons-wrapper"><a class="nav-buttons btn topic-buttons" title="example">Other Business</a></li>
-                <li class="nav-buttons-wrapper"><a class="nav-buttons btn topic-buttons" title="example">This one Topic</a></li>
-                <li class="nav-buttons-wrapper"><a class="nav-buttons btn topic-buttons" title="example">This is Another One</a></li>
-                <li class="nav-buttons-wrapper"><a class="nav-buttons btn topic-buttons" title="example">Wow look Another One</a></li><li class="nav-buttons-wrapper"><a class="nav-buttons btn topic-buttons">Strategic Initiative</a></li>
-                <li class="nav-buttons-wrapper"><a class="nav-buttons btn topic-buttons" title="example">So Many Topics</a></li>
-                <li class="nav-buttons-wrapper"><a class="nav-buttons btn topic-buttons" title="example">This is Just Crazy</a></li><li class="nav-buttons-wrapper"><a class="nav-buttons btn topic-buttons">Strategic Initiative</a></li>
-                <li class="nav-buttons-wrapper"><a class="nav-buttons btn topic-buttons" title="example">I don't have names</a></li>
-                <li class="nav-buttons-wrapper"><a class="nav-buttons btn topic-buttons" title="This is the Last One but it is going to be really long to check things">This is the Last One but it is going to be really long to check things</a></li>
+                <?php
+                    $db = $_SESSION['DASHBOARDS'];
+                    $sizeOf = count($db) - 1;
+                    $topicNameArray = array();
+                    $i = 0;
+                    echo "<li class='nav-buttons-wrapper'><a class='nav-buttons btn topic-buttons' title='".$db[$i]->topic_name."'>".$db[$i]->topic_name."</a></li>";
+                    array_push($topicNameArray, $db[$i]->topic_name);
+                    while($i < $sizeOf){
+                        $i++;
+                        $j = $i - 1;
+                        if($db[$i]->topic_name != $db[$j]->topic_name){
+                            echo "<li class='nav-buttons-wrapper'><a class='nav-buttons btn topic-buttons' title='".$db[$i]->topic_name."'>".$db[$i]->topic_name."</a></li>";
+                            array_push($topicNameArray, $db[$i]->topic_name);
+                        }
+                    }
+                    $tNameArraySize = count($topicNameArray);
+                ?>
             </ul>
         </div>
-        <div id="sections-list" class="col-md-6 col-xs-12 dashboard-wrapper">
-            <div id="no-topics" class="well">
+        <div id='sections-list' class='col-md-6 col-sm-6 col-xs-12 dashboard-wrapper'>
+            <div id='no-topics' class='well'>
                 <h5>Select a topic from the list in order to show a list of sections</h5>
             </div>
-            <div class="dashboard-sections-wrapper panel-group" id="accordion">
-                <?php
-                    // Prints out all sections and dashboards for each topic
-                    for ($i = 1; $i <= 10; $i++) {
-                        $sections = "<div class='panel panel-default'>".
-                                        "<div class='panel-heading'>".
-                                            "<a data-toggle='collapse' data-parent='#accordion' href='#Section".$i."' class='nav-buttons btn section-buttons panel-title' title='Section ".$i."'>Section ".$i." is going to be very long to check that the ellipsis thing is working</a>".
-                                        "</div>".
-                                        "<div id='Section".$i."' class='panel-collapse collapse'>".
-                                            "<div class='panel-body'>".
-                                                "<ul class='nav nav-pills nav-stacked dashboards'>";
-                        $dashboards = '';
-                        $closers = "</ul></div></div></div>";
-                        for ($j = 1; $j <= 5; $j++) {
-                            $dashboards .= "<li role='presentation' class='dashboard-button'><a href='dashboard".$j."'>Section ".$i." --- Dashboard ".$j."</a></li>";
-                        }
-                        echo $sections.$dashboards.$closers;
-                    }               
-                ?>
-            </div>
+        <?php
+        print_r(createSections($db, $topicNameArray));
+        ?>
         </div>
     </div>
-    <div id="cyfe-display" class="col-md-12 col-xs-12">
+    <div id="cyfe-display" class="col-md-12 col-sm-12 col-xs-12">
         <iframe id="cyfe-iframe"></iframe>
     </div>
 

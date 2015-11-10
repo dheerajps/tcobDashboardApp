@@ -35,7 +35,7 @@ $(document).on('click', ".btn.topic-buttons.nav-buttons", function (event) {
         $("#" + sectionToShow).show(); // Shows the div containing the list of sections instead of the message
 
         if (isMobile) { // USE 750 because that's the media query size used in the css file, and how bootstrap does their col-xs classes
-            $("#sections-list").insertAfter($(event.target).closest('li'));
+            $("#sections-list").insertAfter($(event.target));
         } else {
             //Position the sections-list div to the right vertical height to match the selected topic
             $('#sections-list').css('margin-top', (topPosition - topOffset));

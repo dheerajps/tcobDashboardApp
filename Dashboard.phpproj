@@ -25,7 +25,6 @@
     <IncludeDebugInformation>false</IncludeDebugInformation>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Archive.php" />
     <Compile Include="Base\AppConfig.php" />
     <Compile Include="Base\AppHelper.php" />
     <Compile Include="Base\Authentication.php" />
@@ -41,11 +40,6 @@
     <Compile Include="Pages\login.php" />
     <Compile Include="Pages\logout.php" />
     <Compile Include="Resources\css\index-page.css" />
-    <Compile Include="Services\GetDashboard.php" />
-    <Compile Include="Test.php" />
-    <Compile Include="Libs\class.phpmailer.php" />
-    <Compile Include="Libs\class.smtp.php" />
-    <Compile Include="Libs\PHPMailerAutoload.php" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Base\" />
@@ -95,7 +89,6 @@
     <Content Include="Resources\js\index-page.js" />
     <Content Include="Resources\js\index-page.min.js" />
     <Content Include="Resources\js\index-page.min.js.map" />
-    <Content Include="Resources\js\getURLs.js" />
     <Content Include="Resources\js\jquery-1.11.2.min.js" />
     <Content Include="Resources\js\jquery-ui.min.js" />
   </ItemGroup>

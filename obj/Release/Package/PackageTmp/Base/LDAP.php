@@ -1,10 +1,8 @@
 <?php
-/* this is black magic, so it is pulled out into a define,
-essentially this is the key you can use to pull people out of LDAP who work at TCoB */
-define('COB_Fac_Staf_Phd',"CN=UMC BUS All Fac\, Stf\, & PhD,OU=Distribution Lists,OU=COB,OU=MU,DC=col,DC=missouri,DC=edu");
+
 define('LDAP_SERVER', 'col.missouri.edu'); // ldap server
 
-
+/*
 function GetPawprintFromName($name) {
     $ldap_connection = ldap_connect(LDAP_SERVER,3268);
     ldap_set_option($ldap_connection,LDAP_OPT_PROTOCOL_VERSION, 3);
@@ -17,7 +15,7 @@ function GetPawprintFromName($name) {
     //$memberof = $attrs['memberOf'];
     return $attrs['sAMAccountName'][0];//0 is always pawprint
 }
-
+*/
 
 function GetUserVerified($pawprint,$password) {
 
@@ -47,7 +45,8 @@ function GetUserVerified($pawprint,$password) {
 	ldap_close($ldap_connection);
 	return $accepted;
 }
-
+// Actually even this is not used by our project.
+/*
 function GetRealName($pawprint) {
 	//connect and configure ldap
 	$ldap_connection = ldap_connect(LDAP_SERVER,3268);
@@ -66,6 +65,7 @@ function GetRealName($pawprint) {
     $name = $name[0];
     return $name;
 }
+*/
 
 function AssignUserGroups($pawprint)
 {
@@ -79,63 +79,32 @@ function AssignUserGroups($pawprint)
     $filter = "(&(objectClass=user)(sAMAccountName=$pawprint))";
 
     //search and take first entry
-    $searchResult = @ldap_search($ldap_connection, $dn, $filter);
+    $searchResult = ldap_search($ldap_connection, $dn, $filter);
     $ldapEntry = ldap_first_entry($ldap_connection, $searchResult);
     //then take that entry's attributes and scan them
     $attrs = ldap_get_attributes($ldap_connection, $ldapEntry);
-    //$accessLevel = 'NO_RIGHTS'; // default to no rights
-    
-    //overrides
-    if ($pawprint == 'tps9tb') {        
-        return 'ACCESS';
-    }
-    /*if ($pawprint == 'hogansa') {        
-        return 'CHECKER_RIGHTS';
-    }*/
-    
-    
-    for ($i=0; $i<count($attrs['memberOf']); $i++) {
-
-        $groupAdmin = "MU BUS PDPAttendance Admins"; //group 1 for case 1
-        $groupChecker = "MU BUS PDPAttendance Checker"; // group 2 for case 2
-        //$groupStudent = "UNKNOWN"; // group 2 for case 2
-        $property =  $attrs['memberOf'][$i]; //groups the user is a member of
-        
-        // TODO: possibly look for this memberOf to see if they are upper level
-        //CN=MU BUS AdvUpperLevel Students,OU=AdvUpperLevel,OU=Applications,OU=COB,OU=MU,DC=col,DC=missouri,DC=edu
-        
-        // default level - student        
-        //$indexOfGroup = stripos($property, $groupStudent);
-        //if (!empty($indexOfGroup) && $indexOfGroup > 0) {
-        //return 'STUDENT_RIGHTS';
-        //}         
-        
-        // admin
-        $indexOfGroup = stripos($property, $groupAdmin);
-        if (!empty($indexOfGroup) && $indexOfGroup > 0) {
-            return 'ADMIN_RIGHTS';
-
-        }        
-        
-        // checker
-        $indexOfGroup = stripos($property, $groupChecker);
-        if (!empty($indexOfGroup) && $indexOfGroup > 0) {
-            return 'CHECKER_RIGHTS';
-        }        
-        
- 
-    
-    }
   
-    // special cases
-    //echo 'pawprint: ' . $pawprint;
-    //echo 'Access Level: ' . $accessLevel;
-
+    /* Create a new empty member array called $member_array */
+    /* Push the memberOf attributes into the array for later use in querying the DB */
+    $member_array = array();
+    
+    //Loop through attributes, pushing each into array
+    for ($i=0; $i<count($attrs['memberOf']); $i++) {
+        
+        $property =  $attrs['memberOf'][$i]; //groups the user is a member of
+        array_push($member_array, $property);
+       
+    }
     
     ldap_unbind($ldap_connection);
-    return 'STUDENT_RIGHTS';
+
+    return $member_array;
 }
 
+
+// THIS PART IS NOT USED BY DASHBOARD PROJECT
+
+/*
 function getAllFacStaffPhdUsers() {
     $ldapc = ldap_connect(LDAP_SERVER,3268);	
     ldap_bind($ldapc,RSCACCTSSO.'@col.missouri.edu',RSCACCTPASS);
@@ -198,7 +167,7 @@ function getAllGroupsNames($ldap_connection,$distinguishedName, $type){
         return $newarray;  
     }
 }
-
+*/
 function flattenArray($array){
     $arrayValues = array();
     foreach ($array as $value){
