@@ -6,6 +6,10 @@
     padding-right: 0;
 }
 
+::-webkit-scrollbar { 
+    display: none; 
+}
+
 /* The actual list of Topics which hold sections */
 #dashboard-topics {
     float: left;
@@ -50,7 +54,8 @@ li a.topic-buttons.nav-buttons {
 }
 
 /* Buttons for Sections with Section names */
-#dashboard-topics .dashboard-sections-wrapper-wrapper .accordion .panel .panel-heading a.section-buttons.nav-buttons.btn {
+.dashboard-sections-wrapper-wrapper .accordion .panel .panel-heading a.section-buttons.nav-buttons.btn
+ {
     width: 100%;
     color: #565656 !important;
     font-size: 18px;
@@ -77,7 +82,7 @@ div a.section-buttons.nav-buttons:hover {
 }
 
 /* When a Topic is selected, the colors don't change, otherwise bootstrap tries to replace with its own styling */
-#dashboard-topics .nav-buttons-wrapper.active a.nav-buttons.btn {
+#dashboard-topics .nav-buttons-wrapper.active a.nav-buttons.btn.topic-buttons {
     color: #f1b82d !important;
     background-color: white;
 }
@@ -128,6 +133,8 @@ ul li {
 #cyfe-display {
     display: none;
     margin-top: 1.2em;
+    padding-left: 0;
+    padding-right: 0;
 }
 
 /* The actual content of the dashboard from the URL */
@@ -168,6 +175,10 @@ ul li {
     display: none;
 }
 
+#content #back-button {
+    margin-left: 1em;
+}
+
 /* For Mobile Devices, change a lot of the css to make it look awesome on these devices */
 @media screen and (max-width: 749px) {
     #header-wrapper {
@@ -190,11 +201,12 @@ ul li {
         padding-bottom: 1em;
         border-top: none;
     }
-    #back-button {
+    #content #back-button {
         height: 2.25em;
         width: 4em;
         padding: 0.1em;
         margin-top: 1em;
+        margin-left: 0;
     }
     #app-title {
         padding-left: 0.5em;

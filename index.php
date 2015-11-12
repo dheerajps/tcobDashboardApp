@@ -36,15 +36,15 @@ function createSections($db, $topicNameArray) {
 
             $sections = "<div class='panel panel-default'>".
                         "<div class='panel-heading'>".
-                        "<a data-toggle='collapse' data-parent='#".convertNameToId($val)."-accordion' href='#".convertNameToId($val)."-".$key."' class='nav-buttons btn section-buttons panel-title' title='".$key."'>".$key."</a>".
+                        "<a data-toggle='collapse' data-parent='#".convertNameToId($val)."-accordion' href='#".convertNameToId($val)."-".convertNameToId($key)."' class='nav-buttons btn section-buttons panel-title' title='".$key."'>".$key."</a>".
                         "</div>".
-                        "<div id='".convertNameToId($val)."-".$key."' class='panel-collapse collapse'>".
+                        "<div id='".convertNameToId($val)."-".convertNameToId($key)."' class='panel-collapse collapse'>".
                         "<div class='panel-body'>".
                         "<ul class='nav nav-pills nav-stacked dashboards'>";
             $dashboards = '';
             $closers = "</ul></div></div></div>";
             foreach($allSections[$val][$key] as $url_name => $values){
-                $dashboards .= "<li role='presentation' class='dashboard-button'><a href='".$values."' val='".$values."'>".$url_name."</a></li>";
+                $dashboards .= "<li role='presentation' class='dashboard-button'><a href='#' val='".$values."'>".$url_name."</a></li>";
             }
             $returnString .= $sections.$dashboards.$closers;
         }

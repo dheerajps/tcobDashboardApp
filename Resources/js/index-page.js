@@ -2,13 +2,14 @@
  * When you select a topic from the menu
  * 
  * 
- */ 
+ */
+var windowwidth = $(window).width();
+
 $(document).on('click', ".btn.topic-buttons.nav-buttons", function (event) {
     // One variable will measure the position from the top of the page to the div, and one measures
     // from the currently selected topic to the top of the page (confusing but it works, don't question it)  :)
     var topPosition   = $(event.target).closest(".nav-buttons-wrapper").offset().top,
         topOffset     = $(event.target).closest('#dashboard-topics').offset().top,
-        windowwidth   = $(window).width(),
         sectionToShow = convertNameToId((event.target).text),
         // If the user is on a mobile device OR tablet (tested) --- Documentation here: http://getbootstrap.com/css/#grid-options
         isMobile      = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || windowwidth < 750 ;
@@ -56,12 +57,17 @@ $(document).on('click', ".btn.topic-buttons.nav-buttons", function (event) {
 // When you select a dashboard from a section 
 $(document).on('click', 'li.dashboard-button a', function (event) {
     var backButton = "<button type='button' id='back-button'>Back</button>";
+    var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || windowwidth < 750;
 
     event.preventDefault();
     $("#cyfe-iframe").attr('src', $(event.target).attr('val'));
     $("#menu-nav").hide();
     $("#cyfe-display").before(backButton);
-    $('#content').css('background-color', '#333');
+    $('#content').css({ 'background-color': '#333' });
+
+    if (!isMobile) {
+        $('#content').css({ 'padding-left': '0', 'padding-right': '0' });
+    }
 
     //Change the page around
     $('#page').attr('id', 'hidden-page');
@@ -73,11 +79,17 @@ $(document).on('click', 'li.dashboard-button a', function (event) {
 
 // When you click the back button on a dashboard
 $(document).on('click', '#back-button', function (event) {
+    var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || windowwidth < 750;
+
     $('#back-button').remove();
     $("#cyfe-display").hide();
     $("#menu-nav").css('display', 'block');
     $("#cyfe-iframe").attr('src', '');
-    $('#content').css({ 'background-color': '#fff', 'padding-top' : 'none' });
+    $('#content').css({ 'background-color': '#fff', 'padding-top': 'none' });
+
+    if (!isMobile) {
+        $('#content').css({ 'padding-left': '', 'padding-right': '' });
+    }
 
     //Change the page back to normal template
     $('#hidden-page').attr('id', 'page');
