@@ -34,7 +34,7 @@ $(document).on('click', ".btn.topic-buttons.nav-buttons", function (event) {
         }
         return;
     } else {
-        $("#" + convertNameToId($(document).find(".active topic-buttons").text())).hide();
+        $("#" + convertNameToId($(document).find(".active .topic-buttons").text())).hide();
         $("#" + sectionToShow).show(); // Shows the div containing the list of sections instead of the message
 
         if (isMobile) { // USE 750 because that's the media query size used in the css file, and how bootstrap does their col-xs classes
