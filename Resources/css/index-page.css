@@ -176,6 +176,11 @@ ul li {
 
 #content #back-button {
     margin-left: 1em;
+    float: left;
+}
+
+#content #refresh-button {
+    float: right;
 }
 
 /* For Mobile Devices, change a lot of the css to make it look awesome on these devices */
@@ -200,7 +205,7 @@ ul li {
         padding-bottom: 1em;
     }
 
-    #content #back-button {
+    #content #back-button, #content #refresh-button {
         height: 2.25em;
         width: 4em;
         padding: 0.1em;

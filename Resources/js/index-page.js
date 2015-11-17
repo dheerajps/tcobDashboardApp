@@ -62,25 +62,27 @@ $(document).on('click', ".btn.topic-buttons.nav-buttons", function (event) {
 // When you select a dashboard from a section 
 $(document).on('click', 'li.dashboard-button a', function (event) {
 
-    var backButton   = "<button type='button' id='back-button'>Back</button>",
+    var backButton    = "<button type='button' id='back-button'>Back</button>",
         refreshButton = "<button type='button' id='refresh-button'>Refresh</button>",
-        mobilePixels = 768,
-        tabletPixels = 992;
+        mobilePixels  = 768,
+        tabletPixels  = 992;
 
     event.preventDefault();
-    $("#cyfe-iframe").attr('src', $(event.target).attr('val'));
-    $("#menu-nav").hide();
-    $("#cyfe-display").before(backButton);
-    $("#cyfe-display").before(refreshButton);
-    $('#content').css({ 'background-color': '#333' });
 
     if (windowwidth < tabletPixels) {
-        if (confirm("if you are on a tablet or mobile phone, please turn it to landscape mode for better quality of reading the cyfe dashboard!!! You will still be able to read it in portrait mode, but some of the displays won't look as good")) {
+        if (confirm("If you are on a tablet or mobile phone, please turn it to landscape mode for better quality of dashboard. Please turn to landscape and hit the refresh button on the screen.")) {
             $("#cyfe-iframe").attr('src', $(event.target).attr('val'));
             $("#menu-nav").hide();
             $("#cyfe-display").before(backButton);
+            $("#back-button").after(refreshButton);
             $('#content').css({ 'background-color': '#333' });
         }
+    } else {
+        $("#cyfe-iframe").attr('src', $(event.target).attr('val'));
+        $("#menu-nav").hide();
+        $("#cyfe-display").before(backButton);
+        $("#cyfe-display").before(refreshButton);
+        $('#content').css({ 'background-color': '#333' });
     }
 
     if (windowwidth >= mobilePixels || windowwidth >= tabletPixels) {
