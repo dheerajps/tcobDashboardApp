@@ -8,6 +8,25 @@
  * 
  */
 
+// Recreates the session variable for dashboards when a user refreshes the index.php page 
+function reloadDashboards() {
+    if (!isset($_SESSION["visits"]))
+    {
+        $_SESSION["visits"] = 0;
+        $count=0;
+    }
+    $_SESSION["visits"] += 1;
+    $count+=1;
+    if ($_SESSION["visits"] > 1)
+    {
+        unset($_SESSION["visits"]);
+        $userGroups=$_SESSION['usergroups'];
+        unset($_SESSION['DASHBOARDS']);
+        $dashboardArrayAgain = DashboardHelper::getUrls($userGroups);
+        $_SESSION['DASHBOARDS'] = $dashboardArrayAgain;
+        
+    }
+}
 
 // converts a string into the format that we use for class names and id names
 // arg[0] = a string
