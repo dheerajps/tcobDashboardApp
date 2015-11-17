@@ -57,12 +57,15 @@ $(document).on('click', ".btn.topic-buttons.nav-buttons", function (event) {
 // When you select a dashboard from a section 
 $(document).on('click', 'li.dashboard-button a', function (event) {
     var backButton = "<button type='button' id='back-button'>Back</button>";
+    
+    var refreshButton = "<button type='button' id='refresh-button'>Refresh</button>";
     var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || windowwidth < 750;
 
     event.preventDefault();
     $("#cyfe-iframe").attr('src', $(event.target).attr('val'));
     $("#menu-nav").hide();
     $("#cyfe-display").before(backButton);
+    $("#cyfe-display").before(refreshButton);
     $('#content').css({ 'background-color': '#333' });
 
     if (!isMobile) {
@@ -82,6 +85,7 @@ $(document).on('click', '#back-button', function (event) {
     var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || windowwidth < 750;
 
     $('#back-button').remove();
+    $('#refresh-button').remove();
     $("#cyfe-display").hide();
     $("#menu-nav").css('display', 'block');
     $("#cyfe-iframe").attr('src', '');
@@ -94,6 +98,34 @@ $(document).on('click', '#back-button', function (event) {
     //Change the page back to normal template
     $('#hidden-page').attr('id', 'page');
     $('#header-wrapper').removeClass('page');
+});
+
+//on clicking the refresh button for the dashboard
+$(document).on('click', '#refresh-button', function (event) {
+    var backButton = "<button type='button' id='back-button'>Back</button>";
+    
+    var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || windowwidth < 750;
+
+    event.preventDefault();
+    //$("#cyfe-iframe").attr('src', $(event.target).attr('val'));
+    //window.frames["#cyfe-iframe"].location.reload();
+    var cyfeIFrameReload = document.getElementById("cyfe-iframe");
+    cyfeIFrameReload.src = cyfeIFrameReload.src;
+    $("#menu-nav").hide();
+    //$("#cyfe-display").before(refreshButton);
+    
+    $('#content').css({ 'background-color': '#333' });
+
+    if (!isMobile) {
+        $('#content').css({ 'padding-left': '0', 'padding-right': '0' });
+    }
+
+    //Change the page around
+    $('#page').attr('id', 'hidden-page');
+    $('#header-wrapper').addClass('page');
+
+    // Show the div with iframe
+    $("#cyfe-display").fadeIn();
 });
 
 function convertNameToId(inputText) {
