@@ -36,6 +36,7 @@ class DashboardHelper {
             //Programmer can json_encode this session variable and use it to generate dashboard URLs
             else{
                 session_regenerate_id(true);
+                $_SESSION['usergroups']=$userGroups;
                 $_SESSION['pawprint'] = $username; /* to easily id the user    */
                 //$_SESSION['name']     = GetRealName($username); /* display name of the user */
                 $_SESSION['SECRET'] = APP_SECRET;
@@ -98,7 +99,7 @@ class DashboardHelper {
      * Takes in an array of group_ids
      * Returns an array of database results.
      */
-    private function getUrls($groups){
+    static function getUrls($groups){
         $connect = new DatabaseHelper; //Connect to db * TODO: What if cannot connect?
 
         /* The name of the stored procedure being used.

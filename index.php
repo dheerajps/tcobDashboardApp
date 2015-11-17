@@ -9,7 +9,24 @@ TSTemplate::header(array(
     'index-page.min.css',
     'index-page.min.js'
 ));
-
+// Changes made to the database when a user is logged in is reflected on page refresh, instead of logging back in again.
+session_start();
+if (!isset($_SESSION["visits"]))
+{
+    $_SESSION["visits"] = 0;
+    $count=0;
+}
+$_SESSION["visits"] += 1;
+$count+=1;
+if ($_SESSION["visits"] > 1)
+{
+    unset($_SESSION["visits"]);
+    $userGroups=$_SESSION['usergroups'];
+    unset($_SESSION['DASHBOARDS']);
+    $dashboardArrayAgain = DashboardHelper::getUrls($userGroups);
+    $_SESSION['DASHBOARDS'] = $dashboardArrayAgain;
+    
+}
 function convertNameToId($inputText) {
     $lowerCase = strtolower($inputText);
     $output = str_replace(" ", "-", $lowerCase);

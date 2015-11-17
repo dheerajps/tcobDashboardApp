@@ -1,2 +1,5 @@
 *.suo
 Base/Templates/AppConfig.php
+obj/
+Fortifytcob-cyfe-dashboard
+
