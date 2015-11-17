@@ -1,13 +1,13 @@
+::-webkit-scrollbar { 
+    display: none; 
+}
+
 /* Each div which takes of half of the content div, the outer most div underneath the breadcrumbs 
    --- Changes bootstrap default css 
 */
-.dashboard-wrapper {
+#topics, #sections-list {
     padding-left: 0;
     padding-right: 0;
-}
-
-::-webkit-scrollbar { 
-    display: none; 
 }
 
 /* The actual list of Topics which hold sections */
@@ -20,7 +20,7 @@
 }
 
 /* A div that holds the list of section names and dashboards */
-.dashboard-sections-wrapper {
+.dashboard-sections-list {
     padding: 25px;
     background-color: white;
     margin-top: 1em;
@@ -54,7 +54,7 @@ li a.topic-buttons.nav-buttons {
 }
 
 /* Buttons for Sections with Section names */
-.dashboard-sections-wrapper-wrapper .accordion .panel .panel-heading a.section-buttons.nav-buttons.btn
+.dashboard-sections-wrapper .accordion .panel .panel-heading a.section-buttons.nav-buttons.btn
  {
     width: 100%;
     color: #565656 !important;
@@ -144,12 +144,13 @@ ul li {
     height: 100vh;
 }
 
-/* This is very hacky, I took the css from the ID of "page" and made classes, since it restricts the 
-    width of the content in it, I didn't want to put the dashboard in the page, but I was forced to because the "page" 
-    div contains the header, footer, and content.  So, in avoiding to use an absoulte div, I removed the "page" id and simply put 
-    a copy of the css on everything surrounding the dashboard, but not the dashboard itself.  If you want to see where I do this, 
-    check out my javascript, I add and remove "page" classes when you select a dashboard and/or hit the back button.  
-*/
+/*  
+ *  This is very hacky, I took the css from the ID of "page" and made classes, since it restricts the 
+ *  width of the content in it, I didn't want to put the dashboard in the page, but I was forced to because the "page" 
+ *  div contains the header, footer, and content.  So, in avoiding to use an absoulte div, I removed the "page" id and simply put 
+ *  a copy of the css on everything surrounding the dashboard, but not the dashboard itself.  If you want to see where I do this, 
+ *  check out my javascript, I add and remove "page" classes when you select a dashboard and/or hit the back button.  
+ */
 .page {
     width: 900px;
     margin: 0 auto;
@@ -170,22 +171,26 @@ ul li {
     padding: 0 !important;
 }
 
-.dashboard-sections-wrapper-wrapper {
+/* All sections start off hidden */
+.dashboard-sections-wrapper {
     display: none;
 }
 
+/* The back button on dashboards when they are visible */
 #content #back-button {
     margin-left: 1em;
     float: left;
 }
 
+/* The refresh button on dashboards when they are visible */
 #content #refresh-button {
     float: right;
     margin-right: 1em;
 }
 
-/* For Mobile Devices, change a lot of the css to make it look awesome on these devices */
-@media screen and (max-width: 969px) { /* can switch back to 749 if needed */
+/* For Tablets and Mobile devices that aren't overwritten below */
+@media screen and (max-width: 991px) {
+
     #header-wrapper {
         width: 100% !important;
     }
@@ -239,9 +244,11 @@ ul li {
         margin-top: 0;
         box-shadow: none;
     }
+
 }
 
-@media screen and (max-width: 749px) {
+/* Changes that needed to be made specifically for mobile phones and not tablets */
+@media screen and (max-width: 767px) {
 
     #app-title {
         padding-left: 0.5em;
