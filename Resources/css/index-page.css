@@ -181,6 +181,7 @@ ul li {
 
 #content #refresh-button {
     float: right;
+    margin-right: 1em;
 }
 
 /* For Mobile Devices, change a lot of the css to make it look awesome on these devices */
@@ -211,6 +212,7 @@ ul li {
         padding: 0.1em;
         margin-top: 1em;
         margin-left: 0;
+        margin-right: 0;
     }
 
     #app-title {

@@ -153,7 +153,6 @@ ul li {
 .page {
     width: 900px;
     margin: 0 auto;
-    margin-top: 10px;
 }
 
 /* The buttons for sections within topics */
@@ -177,42 +176,55 @@ ul li {
 
 #content #back-button {
     margin-left: 1em;
+    float: left;
+}
+
+#content #refresh-button {
+    float: right;
+    margin-right: 1em;
 }
 
 /* For Mobile Devices, change a lot of the css to make it look awesome on these devices */
-@media screen and (max-width: 749px) {
+@media screen and (max-width: 969px) { /* can switch back to 749 if needed */
     #header-wrapper {
         width: 100% !important;
     }
+
     #content {
         padding: 1em;
-        padding-top: 0;
         padding-bottom: 2em;
     }
+
     #cyfe-display {
         padding-right: 0;
         padding-left: 0;
         margin-top: 1em;
-
     }
+
     .accordion {
-        margin-top: 0;
         padding-top: 1em;
         padding-bottom: 1em;
-        border-top: none;
     }
-    #content #back-button {
+
+    #content #back-button, #content #refresh-button {
         height: 2.25em;
         width: 4em;
         padding: 0.1em;
         margin-top: 1em;
         margin-left: 0;
+        margin-right: 0;
     }
+
     #app-title {
         padding-left: 0.5em;
+        font-size: 32px;
+        top: 3px;
+        left: 0;
     }
+
     #header {
         border-bottom: solid white 1px;
+        height: 4em;
     }
 
     li a.topic-buttons.nav-buttons:hover {
@@ -220,7 +232,39 @@ ul li {
         color: black !important;
         text-shadow: none;
     }
-    .dashboard-sections-wrapper {
+
+    #page {
+        width: auto;
+        min-width: 12em;
+        margin-top: 0;
+        box-shadow: none;
+    }
+}
+
+@media screen and (max-width: 749px) {
+
+    #app-title {
+        padding-left: 0.5em;
+        font-size: 22px;
+        top: 3px;
+        left: 0;
+    }
+
+    #header {
+        border-bottom: solid white 1px;
+        height: 3em;
+    }
+
+    #content {
+        padding: 1em;
+        padding-top: 0;
+        padding-bottom: 2em;
+    }
+
+    .accordion {
+        margin-top: 0;
+        padding-top: 1em;
+        padding-bottom: 1em;
         border-top: none;
     }
 

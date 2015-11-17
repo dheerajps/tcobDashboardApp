@@ -7,6 +7,7 @@
  * When you select a topic from the menu
  */
 var windowwidth = $(window).width();
+var warned = false; 
 
 $(document).on('click', ".btn.topic-buttons.nav-buttons", function (event) {
     // One variable will measure the position from the top of the page to the div, and one measures
@@ -69,13 +70,14 @@ $(document).on('click', 'li.dashboard-button a', function (event) {
 
     event.preventDefault();
 
-    if (windowwidth < tabletPixels) {
+    if (windowwidth < tabletPixels && warned == false) {
         if (confirm("If you are on a tablet or mobile phone, please turn it to landscape mode for better quality of dashboard. Please turn to landscape and hit the refresh button on the screen.")) {
             $("#cyfe-iframe").attr('src', $(event.target).attr('val'));
             $("#menu-nav").hide();
             $("#cyfe-display").before(backButton);
             $("#back-button").after(refreshButton);
             $('#content').css({ 'background-color': '#333' });
+            warned = true; 
         }
     } else {
         $("#cyfe-iframe").attr('src', $(event.target).attr('val'));
