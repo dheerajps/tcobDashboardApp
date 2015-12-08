@@ -188,6 +188,19 @@ ul li {
     margin-right: 1em;
 }
 
+#single-section-header {
+    text-align: center;
+    color: #565656;
+    padding: 0.35em 0.5em;
+    border-bottom: solid 1px transparent;
+    overflow: hidden;
+    -ms-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    font-size: 18px;
+    white-space: nowrap;
+}
+
 /* For Tablets and Mobile devices that aren't overwritten below */
 @media screen and (max-width: 991px) {
 

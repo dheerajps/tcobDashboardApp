@@ -36,6 +36,7 @@
     <Compile Include="Base\Templates\Header.php" />
     <Compile Include="Base\TSTemplate.php" />
     <Compile Include="index.php" />
+    <Compile Include="indexPageHelpers.php" />
     <Compile Include="Libs\DashboardHelper.php" />
     <Compile Include="Pages\login.php" />
     <Compile Include="Pages\logout.php" />

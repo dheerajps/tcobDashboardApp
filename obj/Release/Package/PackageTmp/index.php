@@ -10,8 +10,8 @@ TSTemplate::header(array(
     'index-page.min.css',
     'index-page.min.js'
 ));
+reloadDashboards();
 ?>
-
 
     <div id="menu" class="row">
         <div id="topics" class="col-md-6 col-sm-6 col-xs-12">
