@@ -25,6 +25,9 @@ class DatabaseHelper {
         } else {
             try {
                 $this->connection = sqlsrv_connect( $server, array( "Database" => $db ) );
+                if($this->connection == FALSE){
+                    throw new Exception ('Could not connect');
+                }
             } catch (Exception $e) {
                 $this->errors = sqlsrv_errors();
                 $this->connection = null;

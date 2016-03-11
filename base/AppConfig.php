@@ -20,7 +20,7 @@ if (DEVELOPMENT_MODE === true) {
     if (TEST_MODE === true) {
         define( 'APP_BASE_URL'      , '//apps-dev.business.missouri.edu/tps9tb/tcob-dashboard/'); /* root of app url */
     } else {
-        define( 'APP_BASE_URL'      , '//localhost:46246/'); /* root of app url */
+        define( 'APP_BASE_URL'      , 'https://localhost:44301/'); /* root of app url */
     }
 } else {
     define( 'APP_BASE_URL'      , '//apps.business.missouri.edu/dashboard/'); /* root of app url */
