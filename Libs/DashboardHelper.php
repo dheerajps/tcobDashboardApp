@@ -110,20 +110,22 @@ class DashboardHelper {
         if(array_search('CN=COB MDC,OU=MDC,OU=TS,OU=Departments,OU=COB,OU=MU,DC=col,DC=missouri,DC=edu',$groups)||array_search('CN=COB Dashboard Admins,OU=Dashboards,OU=Applications,OU=COB,OU=MU,DC=col,DC=missouri,DC=edu',$groups))
         {
             $procedure="dbo.getAdminDashboardData";
+            $result = $connect->executeStoredProcedure($procedure);
         }
         else
         {
             $procedure = "dbo.getDashboardData";
-        }
-        /* 
-         * Breaks up the groups array into a string to use it in the stored procedure's IN operator
-         */
-        $in_str = "'".implode("', '", $groups)."'";
+            
+            /* 
+             * Breaks up the groups array into a string to use it in the stored procedure's IN operator
+             */
+            $in_str = "'".implode("', '", $groups)."'";
 
-        /*
-         * Execute procedure. Set results equal to $result. Return that. We'll check if empty elsewhere 
-         */
-        $result = $connect->executeStoredProcedure($procedure, [$in_str]);
+            /*
+             * Execute procedure. Set results equal to $result. Return that. We'll check if empty elsewhere 
+             */
+            $result = $connect->executeStoredProcedure($procedure, [$in_str]);
+        }
 
         return $result;
     }
