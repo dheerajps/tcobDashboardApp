@@ -1,10 +1,9 @@
 <?php
 /* use this to control when you want special behavior for dev mode */
-define( 'DEVELOPMENT_MODE' , true );  
+define( 'DEVELOPMENT_MODE' , true);  
 
 /* Test environment */
 define ('TEST_MODE', false);
-
 /* this key is used to explicitly determine that the session
 that the webserver has, is for this application, upon login
 set the $_SESSION[APP_SECRET]=true; */
@@ -18,7 +17,7 @@ define( 'DEFAULT_PROTOCOL'  , 'http'                     ); /* default to HTTPS 
 define( 'REQUIRE_SSL'       , false ); /* default to opposite of dev mode setting */
 if (DEVELOPMENT_MODE === true) {
     if (TEST_MODE === true) {
-        define( 'APP_BASE_URL'      , '//apps-dev.business.missouri.edu/tps9tb/tcob-dashboard/'); /* root of app url */
+        define( 'APP_BASE_URL'      , '//apps-dev.business.missouri.edu/dpstm3/tcob-dashboard/'); /* root of app url */
     } else {
         define( 'APP_BASE_URL'      , '//localhost:46246/'); /* root of app url */
     }
@@ -79,7 +78,8 @@ if (DEVELOPMENT_MODE === true
 } 
 else if (!defined('DATABASE_SERVER') 
 	      && !defined('DEFAULT_DATABASE')) {
-	define( 'DATABASE_SERVER'   , 'SQLHOST.IATS.MISSOURI.EDU');  /* database server to connect to   */
+	define( 'DATABASE_SERVER'   , 'cob-webdev');  /* database server to connect to   */
 	define( 'DEFAULT_DATABASE'  , 'mubusassessment' );  /* database to execute queries on  */
 }
+//SQLHOST.IATS.MISSOURI.EDU
 ?>

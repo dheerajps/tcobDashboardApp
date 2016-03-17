@@ -27,14 +27,16 @@ class DashboardHelper {
             
             
             //If no viewable dashboards, return 2
-            if(empty($dashboardArray[0])){
+            if(empty($dashboardArray[0]))
+            {
                 return 2;
             }
 
             //If user has dashboards, set all the session data.
             //Set the dashboard array to SESSION['DASHBOARDS'];
             //Programmer can json_encode this session variable and use it to generate dashboard URLs
-            else{
+            else
+            {
                 session_regenerate_id(true);
                 $_SESSION['usergroups']=$userGroups;
                 $_SESSION['pawprint'] = $username; /* to easily id the user    */
@@ -105,8 +107,14 @@ class DashboardHelper {
         /* The name of the stored procedure being used.
          * See /../Database Scripts/dashboardProcedures.sql
          */
-        $procedure = "dbo.getDashboardData";
-
+        if(array_search('CN=COB MDC,OU=MDC,OU=TS,OU=Departments,OU=COB,OU=MU,DC=col,DC=missouri,DC=edu',$groups)||array_search('CN=COB Dashboard Admins,OU=Dashboards,OU=Applications,OU=COB,OU=MU,DC=col,DC=missouri,DC=edu',$groups))
+        {
+            $procedure="dbo.getAdminDashboardData";
+        }
+        else
+        {
+            $procedure = "dbo.getDashboardData";
+        }
         /* 
          * Breaks up the groups array into a string to use it in the stored procedure's IN operator
          */

@@ -19,6 +19,7 @@ function reloadDashboards() {
     $count+=1;
     if ($_SESSION["visits"] > 1)
     {
+        
         unset($_SESSION["visits"]);
         $userGroups=$_SESSION['usergroups'];
         unset($_SESSION['DASHBOARDS']);
