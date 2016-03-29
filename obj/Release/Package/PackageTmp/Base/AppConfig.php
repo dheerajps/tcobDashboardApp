@@ -3,7 +3,7 @@
 define( 'DEVELOPMENT_MODE' , true);  
 
 /* Test environment */
-define ('TEST_MODE', true);
+define ('TEST_MODE',true);
 /* this key is used to explicitly determine that the session
 that the webserver has, is for this application, upon login
 set the $_SESSION[APP_SECRET]=true; */
@@ -19,7 +19,7 @@ if (DEVELOPMENT_MODE === true) {
     if (TEST_MODE === true) {
         define( 'APP_BASE_URL'      , '//apps-dev.business.missouri.edu/dpstm3/tcob-dashboard/'); /* root of app url */
     } else {
-        define( 'APP_BASE_URL'      , '//localhost:46246/'); /* root of app url */
+        define( 'APP_BASE_URL'      , '//localhost:44301/'); /* root of app url */
     }
 } else {
     define( 'APP_BASE_URL'      , '//apps.business.missouri.edu/dashboard/'); /* root of app url */

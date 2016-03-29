@@ -17,7 +17,8 @@ reloadDashboards();
         <div id="topics" class="col-md-6 col-sm-6 col-xs-12">
             <ul class="nav nav-pills nav-stacked" id="dashboard-topics">
                 <?php // Generates all topics for the user from the session variable
-                $topicNameArray = createTopics(); // sometimes visual studios thinks these php functions are "unknown" when they actually are 
+                $topicNameArray = createTopics(); 
+               // sometimes visual studios thinks these php functions are "unknown" when they actually are 
                 ?>
             </ul>
         </div>

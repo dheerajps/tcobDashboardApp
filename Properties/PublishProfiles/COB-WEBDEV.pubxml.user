@@ -6,14 +6,14 @@ by editing this MSBuild file. In order to learn more about this please visit htt
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>\\cob-webdev\Websites\apps-dev.business.missouri.edu\dpstm3\tcob-dashboard</_PublishTargetUrl>
+    <_PublishTargetUrl>\\cob-webdev\websites\apps-dev.business.missouri.edu\dpstm3\tcob-dashboard</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="Archive.php">
       <publishTime>09/29/2015 10:30:32</publishTime>
     </File>
     <File Include="Base/AppConfig.php">
-      <publishTime>01/28/2016 15:44:00</publishTime>
+      <publishTime>03/29/2016 13:05:51</publishTime>
     </File>
     <File Include="Base/AppHelper.php">
       <publishTime>01/27/2016 08:56:08</publishTime>
@@ -25,7 +25,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/27/2016 08:56:08</publishTime>
     </File>
     <File Include="Base/DatabaseHelper.php">
-      <publishTime>01/27/2016 08:56:08</publishTime>
+      <publishTime>03/17/2016 11:13:17</publishTime>
     </File>
     <File Include="Base/LDAP.php">
       <publishTime>01/27/2016 08:56:08</publishTime>
@@ -43,10 +43,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/27/2016 08:56:08</publishTime>
     </File>
     <File Include="index.php">
-      <publishTime>01/27/2016 08:56:08</publishTime>
+      <publishTime>02/16/2016 14:45:54</publishTime>
     </File>
     <File Include="indexPageHelpers.php">
-      <publishTime>01/27/2016 08:56:08</publishTime>
+      <publishTime>02/16/2016 14:45:54</publishTime>
     </File>
     <File Include="Libs/class.phpmailer.php">
       <publishTime>09/22/2015 12:45:47</publishTime>
@@ -55,7 +55,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/22/2015 12:45:47</publishTime>
     </File>
     <File Include="Libs/DashboardHelper.php">
-      <publishTime>01/27/2016 08:56:08</publishTime>
+      <publishTime>03/29/2016 14:23:07</publishTime>
     </File>
     <File Include="Libs/PHPMailerAutoload.php">
       <publishTime>09/22/2015 12:45:47</publishTime>
