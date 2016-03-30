@@ -107,7 +107,7 @@ class DashboardHelper {
         /* The name of the stored procedure being used.
          * See /../Database Scripts/dashboardProcedures.sql
          */
-        if((array_search('CN=COB MDC,OU=MDC,OU=TS,OU=Departments,OU=COB,OU=MU,DC=col,DC=missouri,DC=edu',$groups))||(array_search('CN=COB Dashboard Admins,OU=Dashboards,OU=Applications,OU=COB,OU=MU,DC=col,DC=missouri,DC=edu',$groups)))
+        if((array_search('CN=COB MDC,OU=MDC,OU=TS,OU=Departments,OU=COB,OU=MU,DC=col,DC=missouri,DC=edu',$groups)!==false)||(array_search('CN=COB Dashboard Admins,OU=Dashboards,OU=Applications,OU=COB,OU=MU,DC=col,DC=missouri,DC=edu',$groups)!==false))
         {
             $procedure="dbo.getAdminDashboardData";
             $result = $connect->executeStoredProcedure($procedure);
