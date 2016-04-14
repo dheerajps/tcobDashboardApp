@@ -83,7 +83,18 @@ function AssignUserGroups($pawprint)
     $ldapEntry = ldap_first_entry($ldap_connection, $searchResult);
     //then take that entry's attributes and scan them
     $attrs = ldap_get_attributes($ldap_connection, $ldapEntry);
+    $testdn = $attrs['distinguishedName'];
+    $newdn=$testdn[0];
   
+    $newdn= preg_replace('/\\\\+/', '\\', $newdn);
+    
+
+    $connect = new DatabaseHelper;
+    $procedure="dbo.getAllGroups";
+    $result = $connect->executeStoredProcedure($procedure);
+ 
+    
+
     /* Create a new empty member array called $member_array */
     /* Push the memberOf attributes into the array for later use in querying the DB */
     $member_array = array();
@@ -95,12 +106,29 @@ function AssignUserGroups($pawprint)
         array_push($member_array, $property);
        
     }
-    
+    for($i=0;$i<count($result);$i++)
+    {
+        $check=$result[$i];
+        if((inGroup($ldap_connection,$newdn,$check)===true))
+        {
+            array_push($member_array,$check);
+        }
+
+    } 
+
     ldap_unbind($ldap_connection);
 
     return $member_array;
 }
-
+function inGroup($ldapConnection, $userDN, $groupToFind) {
+    $filter = "(memberof:1.2.840.113556.1.4.1941:=".$groupToFind.")";
+    $search = ldap_search($ldapConnection, $userDN, $filter, array("dn"), 1);
+    $items = ldap_get_entries($ldapConnection, $search);
+    if(!isset($items["count"])) {
+        return false;
+    }
+    return (bool)$items["count"];
+}
 
 // THIS PART IS NOT USED BY DASHBOARD PROJECT
 
