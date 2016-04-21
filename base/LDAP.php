@@ -110,7 +110,7 @@ function AssignUserGroups($pawprint)
     for($i=0;$i<count($groupResult);$i++)
     {
         $groupToCheck=$groupResult[$i]->group_id;
-        if((inGroup($ldap_connection,$newdn,$groupToCheck)) && (array_search($groupToCheck,$member_array)===true))
+        if((inGroup($ldap_connection,$newdn,$groupToCheck)))
         {
             array_push($member_array,$groupToCheck); // if present push that group into the member_array
         }
@@ -122,8 +122,7 @@ function AssignUserGroups($pawprint)
 }
 // Recursively checks if a dn is present in sub groups. Wierd filter, given from ldap
 function inGroup($ldapConnection, $userDN, $groupToFind) {
-    $attach=$groupToFind->group_id; //json-decode
-    $filter = "(memberof:1.2.840.113556.1.4.1941:=".$attach.")";
+    $filter = "(memberof:1.2.840.113556.1.4.1941:=".$groupToFind.")";
     $search = ldap_search($ldapConnection, $userDN, $filter, array("dn"), 1);
     $items = ldap_get_entries($ldapConnection, $search);
     if(!isset($items["count"])) {
