@@ -21,7 +21,7 @@ class DashboardHelper {
 
         // once password is authenticated, check if user has viewable dashboards
 	    if ($passwordIsCorrect) {
-
+            
             $userGroups = AssignUserGroups($username);
             $dashboardArray = DashboardHelper::getUrls($userGroups);
             

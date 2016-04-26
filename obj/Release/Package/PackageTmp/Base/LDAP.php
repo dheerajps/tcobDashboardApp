@@ -1,7 +1,6 @@
 <?php
 
 define('LDAP_SERVER', 'col.missouri.edu'); // ldap server
-
 /*
 function GetPawprintFromName($name) {
     $ldap_connection = ldap_connect(LDAP_SERVER,3268);
@@ -83,7 +82,18 @@ function AssignUserGroups($pawprint)
     $ldapEntry = ldap_first_entry($ldap_connection, $searchResult);
     //then take that entry's attributes and scan them
     $attrs = ldap_get_attributes($ldap_connection, $ldapEntry);
-  
+    $name = $attrs['distinguishedName'];
+    $newdn=$name[0];
+    //Strip off the extra '\' to facilitate the checking of ldap-nested-group
+    $newdn= preg_replace('/\\\\+/', '\\', $newdn);
+    
+    //get all the group-id from the dbo.dashboard_groups
+    $connect = new DatabaseHelper;
+    $procedure="dbo.getAllGroups";
+    $groupResult = $connect->executeStoredProcedure($procedure);
+ 
+    
+
     /* Create a new empty member array called $member_array */
     /* Push the memberOf attributes into the array for later use in querying the DB */
     $member_array = array();
@@ -95,14 +105,33 @@ function AssignUserGroups($pawprint)
         array_push($member_array, $property);
        
     }
-    
-    ldap_unbind($ldap_connection);
+    //Nested group functionality implemeneted here
+    //loop through the $result array and check if the user is a member of the groups in our db
+    for($i=0;$i<count($groupResult);$i++)
+    {
+        $groupToCheck=$groupResult[$i]->group_id;
+        if((inGroup($ldap_connection,$newdn,$groupToCheck)))
+        {
+            array_push($member_array,$groupToCheck); // if present push that group into the member_array
+        }
 
-    return $member_array;
+    } 
+
+    ldap_unbind($ldap_connection);
+    return $member_array; //close and return the member_array
+}
+// Recursively checks if a dn is present in sub groups. Wierd filter, given from ldap
+function inGroup($ldapConnection, $userDN, $groupToFind) {
+    $filter = "(memberof:1.2.840.113556.1.4.1941:=".$groupToFind.")";
+    $search = ldap_search($ldapConnection, $userDN, $filter, array("dn"), 1);
+    $items = ldap_get_entries($ldapConnection, $search);
+    if(!isset($items["count"])) {
+        return false;
+    }
+    return (bool)$items["count"]; //true if part of the group
 }
 
-
-// THIS PART IS NOT USED BY DASHBOARD PROJECT
+// !!!THIS PART IS NOT USED BY DASHBOARD PROJECT!!!
 
 /*
 function getAllFacStaffPhdUsers() {
