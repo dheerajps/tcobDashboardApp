@@ -1,0 +1,297 @@
+::-webkit-scrollbar { 
+    display: none; 
+}
+
+/* Each div which takes of half of the content div, the outer most div underneath the breadcrumbs 
+   --- Changes bootstrap default css 
+*/
+#topics, #sections-list {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* The actual list of Topics which hold sections */
+#dashboard-topics {
+    float: left;
+    list-style: none;
+    margin-left: 0;
+    width: 100%;
+    margin-top: 1em;
+}
+
+/* A div that holds the list of section names and dashboards */
+.dashboard-sections-list {
+    padding: 25px;
+    background-color: white;
+    margin-top: 1em;
+    border-top: 1px solid #979797;
+    border-bottom: 1px solid #979797;
+    /* Prevents stupid bootstrap stuff */
+    margin-bottom: 0.5em;
+}
+
+/* puts a right border on all the topic buttons that AREN'T selected just to look cool */
+.right-wall-topic-menu {
+    border-right: 1px solid #979797
+}
+
+/* Buttons for topics with topic names */
+li a.topic-buttons.nav-buttons {
+    background-color: #DADADA;
+    border-top: 1px solid #979797;
+    border-bottom: 1px solid #979797;
+    width: 100%;
+    color: black;
+    font-size: 22px;
+    padding: .25em;
+    border-radius: 0;
+    margin-bottom: -1px;
+    outline: none;
+    overflow: hidden;
+    -ms-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+}
+
+/* Buttons for Sections with Section names */
+.dashboard-sections-wrapper .accordion .panel .panel-heading a.section-buttons.nav-buttons.btn
+ {
+    width: 100%;
+    color: #565656 !important;
+    font-size: 18px;
+    padding: .4em .4em;
+    border-radius: 0;
+    margin-bottom: -1px;
+    outline: none;
+    overflow: hidden;
+    -ms-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    border: none;
+}
+
+/* When you hover over a topic button */
+li a.topic-buttons.nav-buttons:hover {
+    background-color: #A7A7A7;
+    color: #f1b82d !important;
+}
+
+/* When you hover over a section button */
+div a.section-buttons.nav-buttons:hover {
+    background-color: #E6E5E5;
+}
+
+/* When a Topic is selected, the colors don't change, otherwise bootstrap tries to replace with its own styling */
+#dashboard-topics .nav-buttons-wrapper.active a.nav-buttons.btn.topic-buttons {
+    color: #f1b82d !important;
+    background-color: white;
+}
+
+/* Fixes background issues with mobile devices */
+#dashboard-topics .nav-buttons-wrapper.active a.nav-buttons.section-buttons.btn {
+    background-color: transparent;
+}
+
+/* Pushes all topics buttons and section buttons together vertically */
+#dashboard-topics .nav-buttons-wrapper, .dashboard-sections .nav-buttons-wrapper {
+    margin: 0;
+    margin-top: 0;
+}
+
+/* Pushes buttons together vertically, otherwise bootstrap styling will make it look uneven vertically */
+ul li {
+    padding-bottom: 0 !important;
+}
+
+/* Fixes stupid bootstrap styling */
+.dashboards li:first-child {
+    margin-left: 0;
+}
+
+/* More stupid bootstrap stuff */
+.dashboards li {
+    margin-bottom: 0.5em;
+}
+
+/* Changes text color of dashboard names on modal buttons */
+.dashboards li a {
+    color: black !important;
+}
+
+/* Changes the padding for the body of the panels which contain the dashboards */
+.panel-collapse > .panel-body {
+    padding: 0;
+}
+
+/* Centers the "no topics" div in the right div */
+#no-topics {
+    margin: 3em auto;
+    max-width: 20em;
+}
+
+/* The wrapper for the cyfe dashboard that is selected (initially hidden until one is chosen) */
+#cyfe-display {
+    display: none;
+    margin-top: 1.2em;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* The actual content of the dashboard from the URL */
+#cyfe-iframe {
+    width: 100%;
+    left: 0;
+    height: 100vh;
+}
+
+/*  
+ *  This is very hacky, I took the css from the ID of "page" and made classes, since it restricts the 
+ *  width of the content in it, I didn't want to put the dashboard in the page, but I was forced to because the "page" 
+ *  div contains the header, footer, and content.  So, in avoiding to use an absoulte div, I removed the "page" id and simply put 
+ *  a copy of the css on everything surrounding the dashboard, but not the dashboard itself.  If you want to see where I do this, 
+ *  check out my javascript, I add and remove "page" classes when you select a dashboard and/or hit the back button.  
+ */
+.page {
+    width: 900px;
+    margin: 0 auto;
+}
+
+/* The buttons for sections within topics */
+.panel.panel-default .panel-heading {
+    padding: 0;
+}
+
+/* When you hover over the back button on a dashboard */
+#content #back-button:hover {
+    background-color: #ea0 !important;
+}
+
+/* To prevent bootstrap from being dumb... */
+.container {
+    padding: 0 !important;
+}
+
+/* All sections start off hidden */
+.dashboard-sections-wrapper {
+    display: none;
+}
+
+/* The back button on dashboards when they are visible */
+#content #back-button {
+    margin-left: 1em;
+    float: left;
+}
+
+/* The refresh button on dashboards when they are visible */
+#content #refresh-button {
+    float: right;
+    margin-right: 1em;
+}
+
+#single-section-header {
+    text-align: center;
+    color: #565656;
+    padding: 0.35em 0.5em;
+    border-bottom: solid 1px transparent;
+    overflow: hidden;
+    -ms-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    font-size: 18px;
+    white-space: nowrap;
+}
+
+/* For Tablets and Mobile devices that aren't overwritten below */
+@media screen and (max-width: 991px) {
+
+    #header-wrapper {
+        width: 100% !important;
+    }
+
+    #content {
+        padding: 1em;
+        padding-bottom: 2em;
+    }
+
+    #cyfe-display {
+        padding-right: 0;
+        padding-left: 0;
+        margin-top: 1em;
+    }
+
+    .accordion {
+        padding-top: 1em;
+        padding-bottom: 1em;
+    }
+
+    #content #back-button, #content #refresh-button {
+        height: 2.25em;
+        width: 4em;
+        padding: 0.1em;
+        margin-top: 1em;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    #app-title {
+        padding-left: 0.5em;
+        font-size: 32px;
+        top: 3px;
+        left: 0;
+    }
+
+    #header {
+        border-bottom: solid white 1px;
+        height: 4em;
+    }
+
+    li a.topic-buttons.nav-buttons:hover {
+        background-color: #DADADA;
+        color: black !important;
+        text-shadow: none;
+    }
+
+    #page {
+        width: auto;
+        min-width: 12em;
+        margin-top: 0;
+        box-shadow: none;
+    }
+
+}
+
+/* Changes that needed to be made specifically for mobile phones and not tablets */
+@media screen and (max-width: 767px) {
+
+    #app-title {
+        padding-left: 0.5em;
+        font-size: 22px;
+        top: 3px;
+        left: 0;
+    }
+
+    #header {
+        border-bottom: solid white 1px;
+        height: 3em;
+    }
+
+    #content {
+        padding: 1em;
+        padding-top: 0;
+        padding-bottom: 2em;
+    }
+
+    .accordion {
+        margin-top: 0;
+        padding-top: 1em;
+        padding-bottom: 1em;
+        border-top: none;
+    }
+
+}
+
+.nav.nav-stacked > li.active > a {
+    background-color: #eee;
+    color: #444;
+    border-left-color: #000;
+}

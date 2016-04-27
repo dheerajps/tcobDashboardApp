@@ -34,7 +34,7 @@ class Login extends CI_Controller {
             $rules->set_rules('user', 'Pawprint', 'required|trim|alpha_dash|xss_clean');
             $rules->set_rules('password', 'Password', 'required|trim|xss_clean');
             // Do the login...
-            if($rules->run() && $this->auth_ldap->login(
+            if($rules->run() && $this->dashboard_ldap->login(
                     $rules->set_value('user'),
                     $rules->set_value('password'))) {
                 // Login WIN!

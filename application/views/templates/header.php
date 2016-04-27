@@ -4,7 +4,7 @@
     <!-- SITE META -->
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>TCOB Base Application</title>
+    <title>TCOB Dashboards</title>
     <meta name="viewport" content="width=device-width" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
@@ -36,7 +36,7 @@
             <div class="navbar-header">
                 <a class="navbar-brand" href="./">
                     <strong>TCOB</strong>
-                    <span class="light">Base App</span>
+                    <span class="light">Dashboards</span>
                 </a>
                 <?php if($this->session->userdata('logged_in')){ ?>
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">

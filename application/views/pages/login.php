@@ -1,4 +1,4 @@
-<div class="col-xs-10 col-xs-offset-1 col-sm-4 col-sm-offset-4">
+<div class="col-xs-8 col-sm-4 col-xs-offset-2 col-sm-offset-4">
     <?php
     if($this->session->flashdata("login-error") != NULL || validation_errors() != NULL){
         echo "<div class='alert alert-danger'>";
@@ -16,11 +16,11 @@
     </div>
     <div class="form-group">
         <label for="user" class="control-label">Pawprint</label>
-        <input name="user" class="form-control" id="user" type="text" value="<?php echo set_value('user');?>">
+        <input name="user" class="form-control" id="user" type="text" value="<?php echo set_value('user');?>" />
     </div>
     <div class="form-group">
         <label for="password" class="control-label">Password</label>
-        <input name="password" class="form-control" id="password" type="password" autocomplete="off" value="<?php echo set_value('password');?>">
+        <input name="password" class="form-control" id="password" type="password" autocomplete="off" value="<?php echo set_value('password');?>" />
     </div>
     <div class="form-group">
         <button type="submit" class="btn btn-default">Login</button>
