@@ -16,7 +16,7 @@ class Login extends CI_Controller {
         // Load form validation library
         $this->load->library('form_validation');
         //Load the ldap library
-        $this->load->library('auth_ldap');
+        $this->load->library('dashboard_ldap');
         //Load security library
         $this->load->helper('security');
     }

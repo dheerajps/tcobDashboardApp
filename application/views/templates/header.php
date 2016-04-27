@@ -4,24 +4,26 @@
     <!-- SITE META -->
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title> // TCOB Base Application // Trulaske College of Business, University of Missouri</title>
+    <title>TCOB Base Application</title>
     <meta name="viewport" content="width=device-width" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
     <?php
         $this->load->helper('html');
         //CSS
         echo link_tag('assets/css/usptostrap.css');
+        echo link_tag('assets/css/app.css');
+        echo link_tag('assets/css/index-page.css');
     ?>
+
+    <script src="https://code.jquery.com/jquery-1.12.3.min.js" integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"   integrity="sha256-xNjb53/rY+WmG+4L6tTl9m6PpqknWZvRt0rO1SRnJzw="   crossorigin="anonymous"></script>
+
+    <script src="<?php echo base_url();?>assets/js/bootstrap.min.js"></script>
+    <script src="<?php echo base_url();?>assets/js/index-page.js"></script>
 </head>
 
 <body>
-<div class="skipLinks alert-info">
-   <a class="sr-only focusable" href="#mainContent">Skip to main content</a>
-   <a class="sr-only focusable" href="#contentNav">Skip to content navigation</a>   
-</div>
-<header class="app-header clearfix">
-        
     <div id="logoRow" class="container-fluid">
         <div class="row">
             <div class="container-fluid">
@@ -65,6 +67,5 @@
             </div>
         </div>
     </nav>
-    </header>
     
-    <div id="mainContent" class="container-fluid top-buffer">
+    <div id="content" class="container-fluid top-buffer">
