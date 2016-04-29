@@ -12,6 +12,24 @@ var windowwidth = $(window).width(),
     mobilePixels = 768,
     tabletPixels = 992;
 
+
+//On page load, do this
+$(function () {
+
+    //Evaluate the URL to determine what to load
+    evaluatePath(location.pathname);
+
+});
+
+//Add a popstate event listener to handle the browser back button functionality
+window.addEventListener('popstate', function (e) {
+    var path = e.state; //Get the state/url
+
+    location.reload(true);
+
+    evaluatePath(path); //Evaluate the new URL
+})
+
 //When you select a topic from the menu -------------------------------------------------------------------------------------------------------------------------
 $(document).on('click', ".btn.topic-buttons.nav-buttons", function (event) {
     // One variable will measure the position from the top of the page to the div, and one measures
@@ -27,7 +45,7 @@ $(document).on('click', ".btn.topic-buttons.nav-buttons", function (event) {
 
     // If you select the topic that is already selected...
     if ($(event.target).closest(".nav-buttons-wrapper").hasClass("active")) {
-        $(event.target).closest(".nav-buttons-wrapper").removeClass("active");
+        $(event.target.offsetParent).removeClass("active");
         $('.dashboard-sections-wrapper').hide();
         $('#no-topics').show();
         $('#sections-list').css('margin-top', "0");
@@ -38,10 +56,24 @@ $(document).on('click', ".btn.topic-buttons.nav-buttons", function (event) {
             $("#sections-list").append($("#" + convertNameToId($(document).find(".active .topic-buttons").text())));
             $("#sections-list").insertAfter($('#topics'));
         }
-        return;
+        history.pushState("/", null, "/");
+        var getUrl = window.location;
+        var baseUrl = getUrl.protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
+        evaluatePath(baseUrl);
     } else {
-        $("#" + convertNameToId($(document).find(".active .topic-buttons").text())).hide(); // find the id of the list of sections to show
-        $("#" + sectionToShow).show(); // Shows the div containing the list of sections
+        var currentActiveSection = document.querySelector('[active-section-list="true"]');
+        $(".nav-buttons-wrapper.active").removeClass("active");
+        if (currentActiveSection != null) {
+            //$(currentTopicName).removeClass("active");
+            currentActiveSection.setAttribute('active-section-list', false);
+            $(currentActiveSection).hide();
+        }
+        //$(document).find('[active-section-list]').hide();
+        //$("#" + convertNameToId($(document).find(".active .topic-buttons").text())).hide(); // find the id of the list of sections to show
+        //$(document).find(".active .topic-buttons").text();
+        var newSectionToShow = document.getElementById(sectionToShow);
+        newSectionToShow.setAttribute('active-section-list', true);
+        $(newSectionToShow).show();
         history.pushState("../" + sectionToShow, null, "../" + sectionToShow);
         evaluatePath(location.pathname);
 
@@ -56,8 +88,8 @@ $(document).on('click', ".btn.topic-buttons.nav-buttons", function (event) {
     }
 
     // Changes styling to add and remove right borders on elements to look cool
-    $(event.target).closest(".nav-buttons-wrapper").siblings().removeClass("active").addClass("right-wall-topic-menu");
-    $(event.target).closest(".nav-buttons-wrapper").removeClass("right-wall-topic-menu").addClass("active");
+    //$(event.target).closest(".nav-buttons-wrapper").siblings().removeClass("active").addClass("right-wall-topic-menu");
+    //$(event.target).closest(".nav-buttons-wrapper").removeClass("right-wall-topic-menu").addClass("active");
 });
 
 // When you select a dashboard from a section ------------------------------------------------------------------------------------------------------------------------
@@ -73,8 +105,8 @@ $(document).on('click', 'li.dashboard-button a', function (event) {
 });
 
 function showDashboard(src) {
-    var backButton = "<button type='button' id='back-button'>Back</button>",
-        refreshButton = "<button type='button' id='refresh-button'>Refresh</button>";
+    var backButton = "<button type='button' id='back-button' class='btn btn-default'>Back</button>",
+        refreshButton = "<button type='button' class='btn btn-default'>Refresh</button>";
 
     //Change the page around (very hacky, but had to be done)
     $('#page').attr('id', 'hidden-page');
@@ -96,7 +128,7 @@ function showDashboard(src) {
     $("#cyfe-iframe").attr('src', src);
     $("#cyfe-display").show();
     $("#cyfe-display").before(backButton);
-    $("#cyfe-display").before(refreshButton);
+    //$("#cyfe-display").before(refreshButton);
 
 }
 
@@ -112,6 +144,12 @@ $(document).on('click', '#back-button', function (event) {
     if (windowwidth >= mobilePixels) {
         $('#content').css({'padding-left': '', 'padding-right': ''});
     }
+
+    var url = location.pathname;
+    var newLoc = url.split("/");
+    newLoc.pop();
+    var newLoc = newLoc.join('/');
+    history.pushState(newLoc, null, newLoc);
 
     //Change the page back to normal template
     $('#hidden-page').attr('id', 'page');
@@ -138,45 +176,32 @@ $(document).on("click", ".section-buttons", function (e) {
     }
 });
 
-//Add a popstate event listener to handle the browser back button functionality
-window.addEventListener('popstate', function (e) {
-    var path = e.state; //Get the state/url
-
-    location.reload(true);
-
-    evaluatePath(path); //Evaluate the new URL
-})
-
-//On page load, do this
-$(function () {
-
-    //Evaluate the URL to determine what to load
-    evaluatePath(location.pathname);
-
-});
-
 //Evaluates the URL path to determine what to load in the page's javascript
 //Takes in the path as a parameter
 function evaluatePath(path) {
 
     //$("[aria-expanded='true']").attr("aria-expanded", "false");
-
     //Splits the path with '/' as a delimiter
     var newPath = path.split("/");
+
+    if (newPath[0] == "https:") {
+        return;
+    }
     //If the length is 4, it is assumed that the format of the url is host/topic/section/dashboard
     //If the length is 3: host/topic/section
     //2: host/topic
     //1: index page
     //If the length is less than 1 or greater than 4, we show a 404 page because something's wrong.
+    var pathToParse = newPath;
     if (newPath.length == 4) {
-        var dashboard = newPath.pop();
-        var section = newPath.pop();
-        var topic = newPath.pop();
+        var dashboard = pathToParse.pop();
+        var section = pathToParse.pop();
+        var topic = pathToParse.pop();
     } else if (newPath.length == 3) {
-        var section = newPath.pop();
-        var topic = newPath.pop();
+        var section = pathToParse.pop();
+        var topic = pathToParse.pop();
     } else if (newPath.length == 2) {
-        var topic = newPath.pop();
+        var topic = pathToParse.pop();
     }
     else if (newPath.length < 1 || newPath.length > 4) {
         show404();

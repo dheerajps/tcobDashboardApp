@@ -34,7 +34,7 @@
     <nav id="contentNav" class="navbar navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="./">
+                <a class="navbar-brand" href="<?php echo base_url();?>">
                     <strong>TCOB</strong>
                     <span class="light">Dashboards</span>
                 </a>

@@ -18,7 +18,7 @@ class Main extends CI_Controller{
         if($this->session->userdata('logged_in')){
             $memberof = $this->session->userdata('memberOf');
             if (empty($memberof)){
-                $this->session->set_flashdata("login-error", "you are not authorized to use this application.");
+                $this->session->set_flashdata("login-error", "You are not authorized to use this application.");
                 redirect('login', 'refresh');
             }
             $procedure="dbo.getadmindashboarddata";
