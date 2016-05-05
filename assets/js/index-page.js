@@ -25,9 +25,11 @@ $(function () {
 window.addEventListener('popstate', function (e) {
     var path = e.state; //Get the state/url
 
-    location.reload(true);
+    if ($('#back-button').length) {
+        hide_dashboard();
+    }
 
-    evaluatePath(path); //Evaluate the new URL
+    location.reload(true);
 })
 
 //When you select a topic from the menu -------------------------------------------------------------------------------------------------------------------------
@@ -74,8 +76,14 @@ $(document).on('click', ".btn.topic-buttons.nav-buttons", function (event) {
         var newSectionToShow = document.getElementById(sectionToShow);
         newSectionToShow.setAttribute('active-section-list', true);
         $(newSectionToShow).show();
-        history.pushState("../" + sectionToShow, null, "../" + sectionToShow);
-        evaluatePath(location.pathname);
+        if (newSectionToShow.children.length == 1) {
+            var childSection = newSectionToShow.children[0].children[0].children[1].id;
+            history.pushState("../" + sectionToShow + "/" + childSection, null, "../" + sectionToShow + "/" + childSection);
+            evaluatePath(location.pathname);
+        } else {
+            history.pushState("../" + sectionToShow, null, "../" + sectionToShow);
+            evaluatePath(location.pathname);
+        }
 
         // if you select a topic that wasn't just selected AND you're on a mobile device
         if (windowwidth < mobilePixels) {
@@ -134,26 +142,7 @@ function showDashboard(src) {
 
 // When you click the back button on a dashboard --------------------------------------------------------------------------------------------------------------------
 $(document).on('click', '#back-button', function (event) {
-    // Undo all of the changes made to the page when a dashboard was initially selected.  Puts the page to its former build
-    $('#back-button, #refresh-button').remove();
-    $("#cyfe-display").hide();
-    $("#menu").css('display', 'block');
-    $("#cyfe-iframe").attr('src', '');
-    $('#content').css({'background-color': '#fff', 'padding-top': 'none'});
-
-    if (windowwidth >= mobilePixels) {
-        $('#content').css({'padding-left': '', 'padding-right': ''});
-    }
-
-    var url = location.pathname;
-    var newLoc = url.split("/");
-    newLoc.pop();
-    var newLoc = newLoc.join('/');
-    history.pushState(newLoc, null, newLoc);
-
-    //Change the page back to normal template
-    $('#hidden-page').attr('id', 'page');
-    $('#header-wrapper').removeClass('page');
+    history.go(-1);
 });
 
 //on clicking the refresh button for the dashboard --------------------------------------------------------------------------------------------------------------
@@ -220,6 +209,19 @@ function evaluatePath(path) {
             //We show the topic -- and we want to make active the correct topic button,
             //So we look for that and add the active class to it
             $('#no-topics').hide();
+
+            var currentActiveSection = document.querySelector('[active-section-list="true"]');
+            $(".nav-buttons-wrapper.active").removeClass("active");
+            if (currentActiveSection != null) {
+                //$(currentTopicName).removeClass("active");
+                currentActiveSection.setAttribute('active-section-list', false);
+                $(currentActiveSection).hide();
+            }
+            //$(document).find('[active-section-list]').hide();
+            //$("#" + convertNameToId($(document).find(".active .topic-buttons").text())).hide(); // find the id of the list of sections to show
+            //$(document).find(".active .topic-buttons").text();
+            var newSectionToShow = topicId;
+            topicId.setAttribute('active-section-list', true);
             $(topicId).show();
             var topicBtn = document.getElementsByClassName("nav-buttons btn topic-buttons " + topic);
             var topicWrapper = topicBtn[0].closest(".nav-buttons-wrapper");
@@ -277,4 +279,27 @@ function show404() {
 //Function to add a go-home functionality to any home button we may want to add
 function goToHome() {
     window.location = '/';
+}
+
+function hide_dashboard() {
+    // Undo all of the changes made to the page when a dashboard was initially selected.  Puts the page to its former build
+    $('#back-button, #refresh-button').remove();
+    $("#cyfe-display").hide();
+    $("#menu").css('display', 'block');
+    $("#cyfe-iframe").attr('src', '');
+    $('#content').css({ 'background-color': '#fff', 'padding-top': 'none' });
+
+    if (windowwidth >= mobilePixels) {
+        $('#content').css({ 'padding-left': '', 'padding-right': '' });
+    }
+
+    //var url = location.pathname;
+    //var newLoc = url.split("/");
+    //newLoc.pop();
+    //var newLoc = newLoc.join('/');
+    //history.pushState(newLoc, null, newLoc);
+
+    //Change the page back to normal template
+    $('#hidden-page').attr('id', 'page');
+    $('#header-wrapper').removeClass('page');
 }

@@ -48,28 +48,41 @@
         $returnString .= "<div id='".convertNameToId($val)."' class='dashboard-sections-wrapper'>";
         $returnString .=  "\n\t<div class='dashboard-sections-list panel-group accordion' id='".convertNameToId($val)."-accordion'>";    
         foreach($allSections[$val] as $key => $value) {
-            if (sizeof($allSections[$val]) > 1) {
-                $sections = "<div class='panel panel-default'>".
+            //if (sizeof($allSections[$val]) > 1) {
+            //    $sections = "<div class='panel panel-default'>".
+            //                "<div class='panel-heading'>".
+            //                "<a data-toggle='collapse' data-parent='#".convertNameToId($val)."-accordion' data-target='#".convertNameToId($val)."-".convertNameToId($key)."' class='nav-buttons btn section-buttons panel-title' title='".$key."'>".$key."</a>".
+            //                "</div>".
+            //                "<div id='".convertNameToId($val)."-".convertNameToId($key)."' class='panel-collapse collapse'>".
+            //                "<div class='panel-body'>".
+            //                "<ul class='nav nav-pills nav-stacked dashboards'>";
+            //    $dashboards = '';
+            //    $closers = "</ul></div></div></div>";
+            //    foreach($allSections[$val][$key] as $url_name => $values){
+            //        $dashboards .= "<li role='presentation' class='dashboard-button'><a href='#' id='".stripWhiteSpaces($url_name)."' val='".$values."'>".$url_name."</a></li>";
+            //    }
+            //    $returnString .= $sections.$dashboards.$closers;
+            //} else {
+            //    $returnString .= "<div class='panel panel-default'><div class='panel-heading' id='single-section-header' title='".$key."'>".$key."</div>".
+            //                     "<div class='panel-body'><ul class='nav nav-pills nav-stacked dashboards'>";
+            //    foreach($allSections[$val][$key] as $url_name => $values){
+            //        $returnString .= "<li role='presentation' class='dashboard-button'><a href='#' id='".stripWhiteSpaces($url_name)."' val='".$values."'>".$url_name."</a></li>";
+            //    }
+            //    $returnString .= "</u></div></div>";
+            //}
+            $sections = "<div class='panel panel-default'>".
                             "<div class='panel-heading'>".
                             "<a data-toggle='collapse' data-parent='#".convertNameToId($val)."-accordion' data-target='#".convertNameToId($val)."-".convertNameToId($key)."' class='nav-buttons btn section-buttons panel-title' title='".$key."'>".$key."</a>".
                             "</div>".
                             "<div id='".convertNameToId($val)."-".convertNameToId($key)."' class='panel-collapse collapse'>".
                             "<div class='panel-body'>".
                             "<ul class='nav nav-pills nav-stacked dashboards'>";
-                $dashboards = '';
-                $closers = "</ul></div></div></div>";
-                foreach($allSections[$val][$key] as $url_name => $values){
-                    $dashboards .= "<li role='presentation' class='dashboard-button'><a href='#' id='".stripWhiteSpaces($url_name)."' val='".$values."'>".$url_name."</a></li>";
-                }
-                $returnString .= $sections.$dashboards.$closers;
-            } else {
-                $returnString .= "<div class='panel panel-default'><div class='panel-heading' id='single-section-header' title='".$key."'>".$key."</div>".
-                                 "<div class='panel-body'><ul class='nav nav-pills nav-stacked dashboards'>";
-                foreach($allSections[$val][$key] as $url_name => $values){
-                    $returnString .= "<li role='presentation' class='dashboard-button'><a href='#' id='".stripWhiteSpaces($url_name)."' val='".$values."'>".$url_name."</a></li>";
-                }
-                $returnString .= "</u></div></div>";
+            $dashboards = '';
+            $closers = "</ul></div></div></div>";
+            foreach($allSections[$val][$key] as $url_name => $values){
+                $dashboards .= "<li role='presentation' class='dashboard-button'><a href='#' id='".stripWhiteSpaces($url_name)."' val='".$values."'>".$url_name."</a></li>";
             }
+            $returnString .= $sections.$dashboards.$closers;
         }
         $returnString .= "</div>\n</div>";
     }
