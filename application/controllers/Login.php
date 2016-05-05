@@ -39,7 +39,13 @@ class Login extends CI_Controller {
                     $rules->set_value('password'))) {
                 // Login WIN!
                 $this->session->set_flashdata("success", "You have successfully logged in.");
-                redirect('/', 'refresh');
+                if(isset($_SESSION['request_uri'])){
+                    $request = $_SESSION['request_uri'];
+                    unset($_SESSION['request_uri']);
+                    redirect($request, 'refresh');
+                } else{
+                    redirect('/', 'refresh');
+                }
             }else {
                 // Login FAIL
                 $this->load->template('pages/login');

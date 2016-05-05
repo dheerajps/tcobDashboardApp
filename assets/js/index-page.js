@@ -229,7 +229,7 @@ function evaluatePath(path) {
 
     //If the topic is correct/found/kosher, we assume that they would have hit a 404 otherwise by now
     //So we look for the correct section next
-    if (section !== undefined) {
+    if (section !== undefined && section !== 'verifylogin') {
         var sect = $("#" + section, $(topicId));
         var sectionId = sect.attr("id");
         if (sectionId === undefined) {

@@ -59,7 +59,7 @@
                             <!--<li><a href="profile">User Profile</a></li>
                             <li><a href="#modal-appSettings" data-toggle="modal">Settings</a></li>
                             <li class="divider" role="separator"></li>-->
-                            <li><a href="logout">Logout</a></li>
+                            <li><a href="<?php echo base_url(); ?>logout">Logout</a></li>
                         </ul>
                     </li>
                     <?php } ?>

@@ -15,6 +15,7 @@ class Main extends CI_Controller{
 
     public function index(){
 
+
         if($this->session->userdata('logged_in')){
             $memberof = $this->session->userdata('memberOf');
             if (empty($memberof)){
@@ -26,9 +27,10 @@ class Main extends CI_Controller{
             $data = array(
                 'query1' => $query1
             );
-            
             $this->load->template('pages/home', $data);
         }else{
+            $request_uri = current_url();
+            $_SESSION['request_uri'] = $request_uri;
             redirect('login', 'refresh');
         }
 
