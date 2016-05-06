@@ -22,7 +22,7 @@
 
     $topicNameArray = array();
     $sectionNameArray = array();
-    $query_result = $query1->result();
+    $query_result = $query->result();
 
     array_push($topicNameArray, $query_result[0]->topic_name);
 
