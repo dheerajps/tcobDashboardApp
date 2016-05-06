@@ -103,9 +103,9 @@ class Auth_Ldap {
     protected function _audit($msg){
         $date = date('Y/m/d H:i:s');
         if (file_exists($this->auditlog)){
-            file_put_contents($this->auditlog, $date.": ".$msg."\n",FILE_APPEND);
+            @file_put_contents($this->auditlog, $date.": ".$msg."\n", FILE_APPEND);
         } else{
-            file_put_contents($this->auditlog, $date.": ".$msg."\n");
+            @file_put_contents($this->auditlog, $date.": ".$msg."\n");
         }
     }
 

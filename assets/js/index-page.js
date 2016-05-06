@@ -76,7 +76,7 @@ $(document).on('click', ".btn.topic-buttons.nav-buttons", function (event) {
         var newSectionToShow = document.getElementById(sectionToShow);
         newSectionToShow.setAttribute('active-section-list', true);
         $(newSectionToShow).show();
-        if (newSectionToShow.children.length == 1) {
+        if (newSectionToShow.children[0].children.length == 1) {
             var childSection = newSectionToShow.children[0].children[0].children[1].id;
             history.pushState("../" + sectionToShow + "/" + childSection, null, "../" + sectionToShow + "/" + childSection);
             evaluatePath(location.pathname);
