@@ -14,6 +14,14 @@ body {
     margin-bottom: 60px;
 }
 
+.alert-messages {
+  position: fixed;
+  top: 80px;
+  left: 0;
+  right: 0;
+  z-index: 7000;
+}
+
 #content {
     border-bottom: none;
     padding-left: 80px;

@@ -1,8 +1,9 @@
 <?php
 /**
- * Dashboard_Ldap short summary.
+ * Dashboard_Ldap
  *
- * Dashboard_Ldap description.
+ * Extending Auth_Ldap
+ * Overriding functions login() and _authenticate() to perform specialized dashboard functions
  *
  * @version 1.0
  * @author cwm262
