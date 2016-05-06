@@ -39,6 +39,8 @@ class Login extends CI_Controller {
                     $rules->set_value('password'))) {
                 // Login WIN!
                 $this->session->set_flashdata("success", "You have successfully logged in.");
+
+                //If user is requesting a page before logging in, store it and point user to it later
                 if(isset($_SESSION['request_uri'])){
                     $request = $_SESSION['request_uri'];
                     unset($_SESSION['request_uri']);

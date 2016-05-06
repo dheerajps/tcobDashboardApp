@@ -53,6 +53,10 @@ class Dashboard_Ldap extends Auth_Ldap
         return TRUE;
     }
 
+    /*
+     * Authenticates user with ldap. 
+     * 
+     */
     private function _authenticate($username, $password) {
 
         $this->ldapconn = ldap_connect($this->host, $this->port);
@@ -95,10 +99,16 @@ class Dashboard_Ldap extends Auth_Ldap
         $dn = stripslashes($entries[0]['dn']);
         $id = $username;
         $memberOf = $entries[0]['memberof'];
+
+
+        /*
+         * HIDDEN GROUP CHECK LOGIC
+         * 
+         * Get DN, do fancy stuff with DN, search for all the groups, call function inGroup to check for hidden groups, then return final new array
+         * 
+         */
         $newdn = $entries[0]['dn'];
         $newdn= preg_replace('/\\\\+/', '\\', $newdn);
-
-      
 
         $sql = " SELECT DISTINCT dashboard_groups.group_id FROM dbo.dashboard_groups ";
         $query_result = $this->ci->db->query($sql);

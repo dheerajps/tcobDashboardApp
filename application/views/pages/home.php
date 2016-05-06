@@ -1,17 +1,28 @@
 <?php
 
+    /*
+     * convertNameToId
+     * Takes in a string
+     * Returns a string, lower-case, stripped of white-space (with - in lieu of)
+     */
     function convertNameToId($inputText) {
         $lowerCase = strtolower($inputText);
         $output = str_replace(" ", "-", $lowerCase);
         return $output;
     }
 
+    /*
+     * stripWhiteSpaces
+     * Takes in a string
+     * Returns a string, lower-case, stripped of white-space
+     */
     function stripWhiteSpaces($string){
         $lc = strtolower($string);
         $out = str_replace(' ', '', $lc);
         return $out;
     }
 
+    //Show flash success message if exists. Usually used for login notification
     if($this->session->flashdata("success") != NULL){
 
         echo "<div class='alert alert-success'>";
@@ -20,18 +31,26 @@
         echo "</div>";
     }
 
+    //Set up a topic name and section name array for later use.
     $topicNameArray = array();
     $sectionNameArray = array();
+    //Get the SQL search results from $query object that has been passed from controller/lib, use to iterate
     $query_result = $query->result();
 
+    //Populating the topic name array. This is used to grab topic names from entire return results.
     array_push($topicNameArray, $query_result[0]->topic_name);
 
+    //Iterate rest of results, continue storing topic name
     foreach($query_result as $iter){
         if(array_search($iter->topic_name, $topicNameArray) === false){
             array_push($topicNameArray, $iter->topic_name);
         }
     }
 
+    //We're looping through the results to build our links.
+    //This is wonky and complicated. Hope you don't have to work on it.
+    //Essentially, we're building topics, with sections under it, with dashboards under those.
+    //Have to build the arrays to do that.
     $allSections = array();
     $returnString = '';
     foreach($topicNameArray as $val){
