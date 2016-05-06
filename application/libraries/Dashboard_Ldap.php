@@ -85,9 +85,6 @@ class Dashboard_Ldap extends Auth_Ldap
         $id = $username;
         $memberOf = $entries[0]['memberof'];
 
-        //can use this to determine authorization and access-level in future
-        //$get_role_arg = $id;
-
         return array('cn' => $cn, 'dn' => $dn, 'id' => $id, 'memberOf' => $memberOf);
     }
 
