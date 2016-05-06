@@ -41,6 +41,9 @@ class Auth_Ldap {
         // Load the configuration
         $this->ci->load->config('auth_ldap');
 
+        //Load the database
+        $this->ci->load->database();
+
         $this->_init();
     }
 

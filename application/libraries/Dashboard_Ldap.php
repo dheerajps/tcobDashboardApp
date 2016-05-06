@@ -16,8 +16,19 @@ class Dashboard_Ldap extends Auth_Ldap
 
     function __construct() {
         parent::__construct();
+        
     }
+    function inGroup($ldapConnection,$userDN,$groupToFind){
 
+        $filter = "(memberof:1.2.840.113556.1.4.1941:=".$groupToFind.")";
+        $search = ldap_search($ldapConnection, $userDN, $filter, array("dn"), 1);
+        $items = ldap_get_entries($ldapConnection, $search);
+        if(!isset($items["count"])) {
+            return false;
+        }
+        return (bool)$items["count"]; //true if part of the group
+
+    }
     function login($username, $password) {
 
         //Call _authenticate username, password; Set return to user_info
@@ -79,18 +90,34 @@ class Dashboard_Ldap extends Auth_Ldap
             $this->_audit("Failed login attempt: ".$username." from ".$_SERVER['REMOTE_ADDR']);
             return NULL;
         }
-
+        
         $cn = $entries[0]['cn'][0];
         $dn = stripslashes($entries[0]['dn']);
         $id = $username;
         $memberOf = $entries[0]['memberof'];
+        $newdn = $entries[0]['dn'];
+        $newdn= preg_replace('/\\\\+/', '\\', $newdn);
+
+      
+
+        $sql = " SELECT DISTINCT dashboard_groups.group_id FROM dbo.dashboard_groups ";
+        $query_result = $this->ci->db->query($sql);
+        $query_result = $query_result->result();
+        array_shift($query_result);
+        for($i=0;$i<count($query_result);$i++){
+
+            $groupToCheck=$query_result[$i]->group_id;
+            if($this->inGroup($this->ldapconn,$newdn,$groupToCheck)){
+                
+                array_push($memberOf,$groupToCheck);
+            }
+
+        }
 
         //can use this to determine authorization and access-level in future
         //$get_role_arg = $id;
 
         return array('cn' => $cn, 'dn' => $dn, 'id' => $id, 'memberOf' => $memberOf);
     }
-
-
 
 }
