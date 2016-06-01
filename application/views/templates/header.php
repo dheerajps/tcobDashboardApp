@@ -21,6 +21,9 @@
 
     <script src="<?php echo base_url();?>assets/js/bootstrap.min.js"></script>
     <script src="<?php echo base_url();?>assets/js/index-page.js"></script>
+    <? if($js_to_load != '') : ?>
+        <script src="<?php echo base_url();?>assets/js/<?=$js_to_load;?>"></script>
+    <? endif; ?>
 </head>
 
 <body>

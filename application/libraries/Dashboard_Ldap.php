@@ -96,6 +96,11 @@ class Dashboard_Ldap extends Auth_Ldap
         }
         
         $cn = $entries[0]['cn'][0];
+        if($cn === NULL){
+            $this->ci->session->set_flashdata("login-error", "Sorry. Either your pawprint or your password was incorrect.");
+            $this->_audit("Failed login attempt: ".$username." from ".$_SERVER['REMOTE_ADDR']);
+            return NULL;
+        }
         $dn = stripslashes($entries[0]['dn']);
         $id = $username;
         $memberOf = $entries[0]['memberof'];
