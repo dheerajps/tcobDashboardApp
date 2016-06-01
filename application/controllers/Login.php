@@ -59,7 +59,8 @@ class Login extends CI_Controller {
                 }
             }else {
                 // Login FAIL
-                $this->load->template('pages/login', $data);
+                //$this->load->template('pages/login', $data);
+                redirect('/login', 'refresh');
             }
         }else {
             // Already logged in...
