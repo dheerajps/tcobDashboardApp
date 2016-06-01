@@ -32,8 +32,7 @@ window.addEventListener('popstate', function (e) {
     if ($('#back-button').length) {
         hide_dashboard();
     }
-
-    location.reload(true);
+    evaluatePath(path);
 })
 
 //When you select a topic from the menu -------------------------------------------------------------------------------------------------------------------------
@@ -137,7 +136,7 @@ function showDashboard(src) {
     }
 
     // Show the div with iframe
-    $("#cyfe-iframe").attr('src', src);
+    $("#cyfe-display").html("<iframe id='cyfe-iframe' src='"+src+"'></iframe>");
     $("#cyfe-display").show();
     $("#cyfe-display").before(backButton);
     //$("#cyfe-display").before(refreshButton);
@@ -164,7 +163,7 @@ $(document).on("click", ".section-buttons", function (e) {
         history.pushState(url, null, url);
     }
     else {
-        var url = "../../" + topic;
+        var url = "../" + topic;
         history.pushState(url, null, url);
     }
 });
@@ -172,6 +171,17 @@ $(document).on("click", ".section-buttons", function (e) {
 //Evaluates the URL path to determine what to load in the page's javascript
 //Takes in the path as a parameter
 function evaluatePath(path) {
+
+    if (path == '/') {
+        var openSection = $("[aria-expanded='true']");
+        openSection.collapse('hide');
+        $('.dashboard-sections-wrapper').hide();
+        $('#no-topics').show();
+        $('#sections-list').css('margin-top', "0");
+        $('.nav-buttons-wrapper').removeClass("right-wall-topic-menu");
+        $("li.nav-buttons-wrapper.active").removeClass("active");
+        return;
+    }
 
     //$("[aria-expanded='true']").attr("aria-expanded", "false");
     //Splits the path with '/' as a delimiter
@@ -195,8 +205,9 @@ function evaluatePath(path) {
         var topic = pathToParse.pop();
     } else if (newPath.length == 2) {
         var topic = pathToParse.pop();
-    }
-    else if (newPath.length < 1 || newPath.length > 4) {
+        var openSection = $("[aria-expanded='true']");
+        openSection.collapse('hide');
+    } else if (newPath.length < 1 || newPath.length > 4) {
         show404();
         return;
     }

@@ -107,7 +107,6 @@
         </div>
     </div>
 <div id="cyfe-display" class="col-md-12 col-sm-12 col-xs-12">
-    <iframe id="cyfe-iframe"></iframe>
 </div>
 </div>
 </div>
