@@ -19,6 +19,10 @@ $(function () {
     //Evaluate the URL to determine what to load
     evaluatePath(location.pathname);
 
+    $('#login-success-alert').fadeTo(2000, 500).slideUp(500, function () {
+        $('#login-success-alert').alert('close');
+    })
+
 });
 
 //Add a popstate event listener to handle the browser back button functionality
