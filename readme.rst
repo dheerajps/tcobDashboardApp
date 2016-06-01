@@ -6,10 +6,7 @@ TCOB Base App
 ToDo List
 *******************
 
-    1. Build UI templates
-    2. Work on error handling.
-    3. Make sure app is safe/sanitary
-    4. Test things
+    1. Test things
 
 ****************************
 
