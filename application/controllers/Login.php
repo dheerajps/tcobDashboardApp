@@ -36,7 +36,6 @@ class Login extends CI_Controller {
     //Authenticates user with LDAP; redirects them to home if authenticated; redirects
     //them back to login if not
     public function verifyLogin(){
-        $data = $this->data;
         if($this->session->userdata('logged_in') === NULL) {
             // Set up rules for form validation
             $rules = $this->form_validation;
@@ -59,7 +58,6 @@ class Login extends CI_Controller {
                 }
             }else {
                 // Login FAIL
-                //$this->load->template('pages/login', $data);
                 redirect('/login', 'refresh');
             }
         }else {

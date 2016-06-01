@@ -25,7 +25,7 @@
     //Show flash success message if exists. Usually used for login notification
     if($this->session->flashdata("success") != NULL){
 
-        echo "<div class='alert alert-success'>";
+        echo "<div id='login-success-alert' class='alert alert-success'>";
         echo "\t<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>";
         echo $this->session->flashdata("success");
         echo "</div>";
