@@ -22,7 +22,7 @@ class Login extends CI_Controller {
         $this->load->library('dashboard_ldap');
         //Load security library
         $this->load->helper('security');
-        //Load page specific javascript
+        //Load page specific javascript (e.g., login-page.js)
         $this->data = array(
             'js_to_load' => 'login-page.js'
         );
@@ -32,8 +32,7 @@ class Login extends CI_Controller {
         if($this->session->userdata('logged_in')){
             redirect('/', 'refresh');
         }
-        $data = $this->data;
-        $this->load->template('pages/login', $data);
+        $this->load->template('pages/login', $this->data);
     }
     //VerifyLogin function is called when submit is pressed on login page ;;
     //Authenticates user with LDAP; redirects them to home if authenticated; redirects
