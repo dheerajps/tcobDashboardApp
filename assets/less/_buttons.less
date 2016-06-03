@@ -98,4 +98,20 @@ fieldset[disabled] .btn {
 button[type=submit] {
     min-width: 100px;
     }
-    
+
+.btn-default{
+    &:hover{
+        color: @btn-default-color-hover;
+        background-color: @btn-default-bgcolor-hover;
+        border-color: @btn-default-borderColor-hover;
+    }
+}
+
+.btn-info{
+    background-color: @btn-info-bgcolor;
+    border-color: @btn-info-border-color;
+    &:hover{
+        background-color: @btn-info-bgcolor-hover;
+        border-color: @btn-info-borderColor-hover;
+    }
+}

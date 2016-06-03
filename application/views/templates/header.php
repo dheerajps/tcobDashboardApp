@@ -11,16 +11,16 @@
     <?php
         $this->load->helper('html');
         //CSS
-        echo link_tag('assets/css/usptostrap.css');
-        echo link_tag('assets/css/app.css');
-        echo link_tag('assets/css/index-page.css');
+        echo link_tag('assets/css/usptostrap.min.css');
+        echo link_tag('assets/css/app.min.css');
+        echo link_tag('assets/css/index-page.min.css');
     ?>
 
     <script src="https://code.jquery.com/jquery-1.12.3.min.js" integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ=" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"   integrity="sha256-xNjb53/rY+WmG+4L6tTl9m6PpqknWZvRt0rO1SRnJzw="   crossorigin="anonymous"></script>
 
     <script src="<?php echo base_url();?>assets/js/bootstrap.min.js"></script>
-    <script src="<?php echo base_url();?>assets/js/index-page.js"></script>
+    <script src="<?php echo base_url();?>assets/js/index-page.min.js"></script>
     <?php if($js_to_load != '') : ?>
         <script src="<?php echo base_url();?>assets/js/<?=$js_to_load;?>"></script>
     <?php endif; ?>

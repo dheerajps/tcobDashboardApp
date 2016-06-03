@@ -11,7 +11,7 @@
 @brand-success: #008139;
 @brand-danger: #AC2B37;
 @brand-warning: #f3d54e;
-@brand-info: #1596D1;
+@brand-info: #999;
 
 @main-body-bg-image: url('../images/darkdenim3.png');
 
@@ -43,6 +43,7 @@
 
 @text-color:                        #444;
 @headings-color:                    #222;
+@alert-text-color:                  @black;
 
 @body-bg:                           #FFF;
 
@@ -59,12 +60,17 @@
 @btn-font-weight:                   600;
 @font-size-base:                    13px;
 @line-height-base:                  1.4;
-
-//@btn-default-bg:                    #f9f9f9;
+      
 @btn-default-bg:                    @brand-primary;
-//@btn-default-color:                 @text-color;
 @btn-default-color:                 @mizzou-gold;
-@btn-default-color-hover:           lighten(spin(@mizzou-gold, -3), 2%);
+@btn-default-color-hover:           #fff;
+@btn-default-bgcolor-hover:         #555;
+@btn-default-borderColor-hover:     #adadad;
+
+@btn-info-bgcolor:                  #ccc;
+@btn-info-border-color:             #999;
+@btn-info-bgcolor-hover:            @btn-default-bgcolor-hover;
+@btn-info-borderColor-hover:        #333;
 
 @btn-warning-color: 				@text-color;
 
@@ -75,16 +81,16 @@
 @input-border-focus:                @brand-info;
 
 @navbar-height:                     42px;
-@navbar-inverse-bg:                 @brand-primary;
-//@navbar-inverse-color:              #fff;
-@navbar-inverse-color:              @mizzou-gold;
-//@navbar-inverse-link-color:         #fff;
-@navbar-inverse-link-color:         @mizzou-gold;
+@navbar-inverse-bg:                 #333;
+@navbar-inverse-color:              #fff;
+@navbar-brand-color:                #fff;
+@navbar-inverse-link-color:         #fff;
 @navbar-border-radius:              0;
 @navbar-margin-bottom:              0;
 @navbar-inverse-link-hover-bg:      lighten(spin(@navbar-inverse-bg, -3), 2%);
 @navbar-inverse-toggle-hover-bg:    @navbar-inverse-link-hover-bg;
 @navbar-inverse-brand-hover-bg:     @navbar-inverse-link-hover-bg;
+@navbar-form-color:                 #333;
 
 @nav-tabs-active-link-hover-bg:     #fff;
 @nav-tabs-link-hover-border-color:  #ddd;
@@ -138,21 +144,21 @@
 @state-danger-bg:                   mix(@brand-danger, #fff, 15%);
 @state-danger-border:               mix(@state-danger-bg, #000, 90%);
 
-@alert-success-text:                @text-color;
+@alert-success-text:                @alert-text-color;
 @alert-success-bg:                  @state-success-bg;
 @alert-success-border:              @state-success-border;
 
-@alert-info-text:                   @text-color;
+@alert-info-text:                   @alert-text-color;
 @alert-info-bg:                     @state-info-bg;
 @alert-info-border:                 @state-info-border;
 
-@alert-warning-text:                @text-color;
+@alert-warning-text:                @alert-text-color;
 @alert-warning-bg:                  @state-warning-bg;
 @alert-warning-border:              @state-warning-border;
 
-@alert-danger-text:                 @text-color;
-@alert-danger-bg:                   @state-danger-bg;
-@alert-danger-border:               @state-danger-border;
+@alert-danger-text:                 @alert-text-color;
+@alert-danger-bg:                   #e78080;
+@alert-danger-border:               #900;
 
 @padding-small-vertical:            3px;
 @padding-small-horizontal:          8px;

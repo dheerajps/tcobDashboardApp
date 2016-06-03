@@ -1,0 +1,20 @@
+[
+  {
+    "outputFileName": "assets/js/index-page.js",
+    "inputFiles": [
+      "assets/js/index-page.js"
+    ]
+  },
+  {
+    "outputFileName": "assets/css/app.css",
+    "inputFiles": [
+      "assets/css/app.css"
+    ]
+  },
+  {
+    "outputFileName": "assets/css/index-page.css",
+    "inputFiles": [
+      "assets/css/index-page.css"
+    ]
+  }
+]
