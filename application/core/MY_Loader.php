@@ -2,7 +2,7 @@
 /*
  * Extends the CI_Loader. Is used to load our template format. When a single page is called, e.g.,
  * $this->load->template('pages/login'), this controller will render that template sandwiched
- * between the header and footer templates. Reduces the amount of code from 3 lines to 1
+ * between the header and footer templates. Reduces the amount of code from 3 lines to 1 when used in controllers.
  */
 class MY_Loader extends CI_Loader {
     public function template($template_name, $vars = array(), $return = FALSE)

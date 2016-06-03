@@ -9,25 +9,21 @@
      *
      */
 class Login extends CI_Controller {
-
     private $data;
-
     public function __construct() {
         parent::__construct();
-        // Load form helper library
+        // Load helpers and libraries.
         $this->load->helper('form');
-        // Load form validation library
-        $this->load->library('form_validation');
-        //Load the ldap library
-        $this->load->library('dashboard_ldap');
-        //Load security library
         $this->load->helper('security');
+        $this->load->library('form_validation');
+        $this->load->library('dashboard_ldap');
         //Load page specific javascript (e.g., login-page.js)
         $this->data = array(
             'js_to_load' => 'login-page.js'
         );
     }
     //Default function call; renders header, login view, and footer
+    //Passing in page-specific javascript
     public function index(){
         if($this->session->userdata('logged_in')){
             redirect('/', 'refresh');
@@ -49,7 +45,6 @@ class Login extends CI_Controller {
                     $rules->set_value('password'))) {
                 // Login WIN!
                 $this->session->set_flashdata("success", "You have successfully logged in.");
-
                 //If user is requesting a page before logging in, store it and point user to it later
                 if(isset($_SESSION['request_uri'])){
                     $request = $_SESSION['request_uri'];

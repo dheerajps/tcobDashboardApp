@@ -1,18 +1,15 @@
-<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
-
+<?php
+ if (!defined('BASEPATH')) exit('No direct script access allowed');
 /*
  * This file is part of Auth_Ldap.
-
     Auth_Ldap is free software: you can redistribute it and/or modify
     it under the terms of the GNU Lesser General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
-
     Auth_Ldap is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU General Public License for more details.
-
     You should have received a copy of the GNU General Public License
     along with Auth_Ldap.  If not, see <http://www.gnu.org/licenses />.
  *
@@ -34,25 +31,19 @@
 class Auth_Ldap {
     function __construct() {
         $this->ci =& get_instance();
-
         // Load the session library
         $this->ci->load->library('session');
-
         // Load the configuration
         $this->ci->load->config('auth_ldap');
-
         //Load the database
         $this->ci->load->database();
-
         $this->_init();
     }
-
     /**
      * @access private
      * @return void
      */
     private function _init() {
-
         $this->host = $this->ci->config->item('host');
         $this->port = $this->ci->config->item('port');
         $this->basedn = $this->ci->config->item('basedn');
@@ -65,37 +56,28 @@ class Auth_Ldap {
         $this->roles = $this->ci->config->item('roles');
         $this->auditlog = $this->ci->config->item('auditlog');
         $this->member_attribute = $this->ci->config->item('member_attribute');
-
     }
-
     /**
      * @access public
      * @param string $username
      * @param string $password
      */
     function login($username, $password) {
-
         //Call _authenticate username, password; Set return to user_info
         $user_info = $this->_authenticate($username,$password);
-
         if($user_info === NULL){
             return NULL;
         }
-
         // Record the login
         $this->_audit("Successful login: ".$user_info['cn']."(".$username.") from ".$this->ci->input->ip_address());
-
         // Set the session data
         $customdata = array('username' => $username,
                             'cn' => $user_info['cn'],
                             'dn' => $user_info['dn'],
                             'logged_in' => TRUE);
-
         $this->ci->session->set_userdata($customdata);
-
         return TRUE;
     }
-
     /**
      * @access protected
      * @param string $msg
@@ -108,7 +90,6 @@ class Auth_Ldap {
             @file_put_contents($this->auditlog, $date.": ".$msg."\n");
         }
     }
-
     /**
      * @access private
      * @param string $username
@@ -117,36 +98,29 @@ class Auth_Ldap {
      */
     private function _authenticate($username, $password) {
         $needed_attrs = array('dn', $this->login_attribute, 'cn');
-
         $this->ldapconn = ldap_connect($this->host, $this->port);
-
         if(! $this->ldapconn) {
             $this->_audit("Error: Could not make a connection to ldap given host and port.");
             $this->ci->session->set_flashdata("login-error", "There was a problem connecting to the login system. Please contact hogansa@missouri.edu");
             return NULL;
         }
-
         ldap_set_option($this->ldapconn, LDAP_OPT_REFERRALS, 0);
         ldap_set_option($this->ldapconn, LDAP_OPT_PROTOCOL_VERSION, 3);
-
         if($this->proxy_user) {
             $bind = ldap_bind($this->ldapconn, $this->proxy_user.'@'.$this->host, $this->proxy_pass);
         }else {
             $bind = ldap_bind($this->ldapconn);
         }
-
         if(!$bind){
             $this->ci->session->set_flashdata("login-error", "There was a problem connecting to the login system. Please contact hogansa@missouri.edu");
             $this->_audit("Error: Could not connect to ldap with given proxy user name and pass.");
             return NULL;
         }
-
         $filter = '('.$this->login_attribute.'='.$username.')';
         $search = ldap_search($this->ldapconn, $this->basedn, $filter,
                 $needed_attrs);
         $entries = ldap_get_entries($this->ldapconn, $search);
         $binddn = $entries[0]['dn'];
-
         // Now actually try to bind as the user
         $bind = ldap_bind($this->ldapconn, $binddn, $password);
         if(! $bind) {
@@ -154,24 +128,19 @@ class Auth_Ldap {
             $this->_audit("Failed login attempt: ".$username." from ".$_SERVER['REMOTE_ADDR']);
             return NULL;
         }
-
         $cn = $entries[0]['cn'][0];
         $dn = stripslashes($entries[0]['dn']);
         $id = $username;
-
         //can use this to determine authorization and access-level in future
         //$get_role_arg = $id;
-
         return array('cn' => $cn, 'dn' => $dn, 'id' => $id);
     }
-
     /**
      * @access private
      * @param string $username
      * @return int
      */
     private function _get_role($username) {
-
         /*
         $filter = '('.$this->member_attribute.'='.$username.')';
         $search = ldap_search($this->ldapconn, $this->basedn, $filter, array('cn'));
@@ -190,17 +159,13 @@ class Auth_Ldap {
         }
         return false;
         */
-
         //if(strcmp($username, "cwm262") == 0){
         //    $role = array_search("User", $this->roles);
         //    if(!empty($role)){
         //        return $role;
         //    }
         //}
-
         return 0;
-
     }
 }
-
 ?>
