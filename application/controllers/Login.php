@@ -29,6 +29,9 @@ class Login extends CI_Controller {
     }
     //Default function call; renders header, login view, and footer
     public function index(){
+        if($this->session->userdata('logged_in')){
+            redirect('/', 'refresh');
+        }
         $data = $this->data;
         $this->load->template('pages/login', $data);
     }
