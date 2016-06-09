@@ -53,15 +53,9 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <?php if($this->session->userdata('logged_in')){ ?>
-                    <!--<li><a href="#">Link1</a></li>
-                    <li><a href="#">Link2</a></li>-->
-                    
                     <li class="dropdown">
                         <a aria-expanded="false" aria-haspopup="true" role="button" data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon icon-user margin-right-1 icon-inverse"></i><?php echo $this->session->userdata('cn')?> <span class="caret"></span><span class="sr-only">Toggle Dropdown</span></a>
                         <ul class="dropdown-menu" role="menu">
-                            <!--<li><a href="profile">User Profile</a></li>
-                            <li><a href="#modal-appSettings" data-toggle="modal">Settings</a></li>
-                            <li class="divider" role="separator"></li>-->
                             <li><a href="<?php echo base_url(); ?>logout">Logout</a></li>
                         </ul>
                     </li>
@@ -71,4 +65,4 @@
         </div>
     </nav>
     
-    <div id="content" class="container-fluid top-buffer">
+    <div id="content" class="container-fluid">

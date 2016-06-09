@@ -211,7 +211,6 @@ ul li {
 
     #content {
         padding: 1em;
-        padding-bottom: 2em;
     }
 
     #cyfe-display {
@@ -259,6 +258,10 @@ ul li {
         box-shadow: none;
     }
 
+    footer.footer.container-fluid{
+        font-size: xx-small;
+    }
+
 }
 
 /* Changes that needed to be made specifically for mobile phones and not tablets */
@@ -276,17 +279,15 @@ ul li {
         height: 3em;
     }
 
-    #content {
-        padding: 1em;
-        padding-top: 0;
-        padding-bottom: 2em;
-    }
-
     .accordion {
         margin-top: 0;
         padding-top: 1em;
         padding-bottom: 1em;
         border-top: none;
+    }
+
+    .top-buffer{
+        margin-top: 0;
     }
 
 }

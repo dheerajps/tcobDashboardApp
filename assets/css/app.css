@@ -9,11 +9,6 @@ html{
     min-height: 100%;
 }
 
-body {
-    background-color: #fff;
-    margin-bottom: 60px;
-}
-
 .alert-messages {
   position: fixed;
   top: 80px;
@@ -24,8 +19,8 @@ body {
 
 #content {
     border-bottom: none;
-    padding-left: 140px;
-    padding-right: 140px;
+    padding-left: 40px;
+    padding-right: 40px;
 }
 
 #environment {

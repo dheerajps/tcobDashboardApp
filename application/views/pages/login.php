@@ -1,4 +1,4 @@
-<div class="col-xs-8 col-sm-4 col-xs-offset-2 col-sm-offset-4">
+<div class="col-xs-8 col-sm-4 col-xs-offset-2 col-sm-offset-4 top-buffer">
     <?php
     if($this->session->flashdata("login-error") != NULL || validation_errors() != NULL){
         echo "<div id='login-error-alert' class='alert alert-danger'>";

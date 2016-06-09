@@ -11173,18 +11173,19 @@ html {
 body {
   background-color: #fff;
   color: #000;
-  margin-bottom: 42px;
+  margin-bottom: 50px;
 }
 footer.footer.container-fluid {
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 42px;
+  height: 50px;
   background-color: #000;
   border-top: 2px solid #F1B82D;
   color: #F1B82D;
   text-decoration: none;
   font-weight: lighter;
+  font-size: smaller;
 }
 footer.footer.container-fluid a {
   color: #fff;
