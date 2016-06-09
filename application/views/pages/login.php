@@ -8,7 +8,7 @@
         echo "</div>";
     }
     $attributes = array('class' => 'form-horizontal');
-    echo form_open('login/verifylogin', $attributes);
+    echo form_open('login', $attributes);
     ?>
     <div class="form-group">
         <label for="user" class="control-label">Pawprint</label>
