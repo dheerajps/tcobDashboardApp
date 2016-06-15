@@ -73,7 +73,7 @@ li a.topic-buttons.nav-buttons {
 /* When you hover over a topic button */
 li a.topic-buttons.nav-buttons:hover {
     background-color: #A7A7A7;
-    color: #f1b82d !important;
+    color: #900000 !important;
 }
 
 /* When you hover over a section button */
@@ -83,7 +83,7 @@ div a.section-buttons.nav-buttons:hover {
 
 /* When a Topic is selected, the colors don't change, otherwise bootstrap tries to replace with its own styling */
 #dashboard-topics .nav-buttons-wrapper.active a.nav-buttons.btn.topic-buttons {
-    color: #f1b82d !important;
+    color: #900000 !important;
     background-color: white;
 }
 
