@@ -28,13 +28,25 @@ $(function () {
 //Add a popstate event listener to handle the browser back button functionality
 window.addEventListener('popstate', function (e) {
     var path = e.state; //Get the state/url
+    var splitPath = path.split('/');
+    var newPath = '';
+    if(splitPath[0] == '..'){
+        newPath = '/';
+    }
+    pathLen = splitPath.length;
+    for(i = 0; i < pathLen; i++){
+        if(splitPath[i] != '..' && splitPath[i] != ''){
+            newPath = newPath + splitPath[i];
+        }
+        if(i != (pathLen - 1)){
+            newPath = newPath + '/';
+        }
+    }
 
     if ($('#back-button').length) {
         hide_dashboard();
     }
-    else{
-        evaluatePath(path);
-    }
+    evaluatePath(newPath);
 })
 
 //When you select a topic from the menu -------------------------------------------------------------------------------------------------------------------------
@@ -63,7 +75,7 @@ $(document).on('click', ".btn.topic-buttons.nav-buttons", function (event) {
             $("#sections-list").append($("#" + convertNameToId($(document).find(".active .topic-buttons").text())));
             $("#sections-list").insertAfter($('#topics'));
         }
-        history.pushState("/", null, "/");
+        history.pushState("/dashboard/", null, "/dashboard/");
         var getUrl = window.location;
         var baseUrl = getUrl.protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
         evaluatePath(baseUrl);
@@ -170,7 +182,7 @@ $(document).on("click", ".section-buttons", function (e) {
         history.pushState(url, null, url);
     }
     else {
-        var url = "../" + topic;
+        var url = "/dashboard/" + topic;
         history.pushState(url, null, url);
     }
 });
@@ -179,7 +191,7 @@ $(document).on("click", ".section-buttons", function (e) {
 //Takes in the path as a parameter
 function evaluatePath(path) {
 
-    if (path == '/') {
+    if (path == '/dashboard/') {
         var openSection = $("[aria-expanded='true']");
         openSection.collapse('hide');
         $('.dashboard-sections-wrapper').hide();
@@ -303,7 +315,7 @@ function show404() {
 
 //Function to add a go-home functionality to any home button we may want to add
 function goToHome() {
-    window.location = '/';
+    window.location = '/dashboard/';
 }
 
 function hide_dashboard() {
