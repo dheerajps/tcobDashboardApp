@@ -50,7 +50,8 @@ class Main extends CI_Controller{
             }
             //Send query results to view
             $data = array(
-                'query' => $query
+                'query' => $query,
+                'js_to_load' => 'index-page.js'
             );
             $this->load->template('pages/home', $data);
         }else{

@@ -32,7 +32,9 @@ window.addEventListener('popstate', function (e) {
     if ($('#back-button').length) {
         hide_dashboard();
     }
-    evaluatePath(path);
+    else{
+        evaluatePath(path);
+    }
 })
 
 //When you select a topic from the menu -------------------------------------------------------------------------------------------------------------------------
@@ -81,10 +83,12 @@ $(document).on('click', ".btn.topic-buttons.nav-buttons", function (event) {
         $(newSectionToShow).show();
         if (newSectionToShow.children[0].children.length == 1) {
             var childSection = newSectionToShow.children[0].children[0].children[1].id;
-            history.pushState("../" + sectionToShow + "/" + childSection, null, "../" + sectionToShow + "/" + childSection);
+            history.pushState("../../dashboard/" + sectionToShow + "/" + childSection, null, "../../dashboard/" + sectionToShow + "/" + childSection);
             evaluatePath(location.pathname);
         } else {
-            history.pushState("../" + sectionToShow, null, "../" + sectionToShow);
+            var getPath = window.location.pathname.split('/');
+            history.pushState('/' + getPath[1] + '/' + sectionToShow, null, '/' + getPath[1] + '/' + sectionToShow);
+            //history.pushState("../dashboard/" + sectionToShow, null, "../dashboard/" + sectionToShow);
             evaluatePath(location.pathname);
         }
 
@@ -153,13 +157,16 @@ $(document).on('click', '#refresh-button', function () {
     document.getElementById("cyfe-iframe").src = document.getElementById("cyfe-iframe").src;
 });
 
+//Selecting a section
 $(document).on("click", ".section-buttons", function (e) {
 
     var topic = e.target.parentElement.parentElement.parentElement.parentElement.id;
     var section = e.target.parentElement.nextSibling.id;
 
     if (e.target.attributes[5].value == "true") {
-        var url = "../" + topic + "/" + section;
+        //var path = window.location.pathname.split('/');
+        var url = '/dashboard/' + topic + '/' + section;
+        //var url = "../" + topic + "/" + section;
         history.pushState(url, null, url);
     }
     else {
@@ -190,24 +197,27 @@ function evaluatePath(path) {
     if (newPath[0] == "https:") {
         return;
     }
-    //If the length is 4, it is assumed that the format of the url is host/topic/section/dashboard
-    //If the length is 3: host/topic/section
-    //2: host/topic
-    //1: index page
-    //If the length is less than 1 or greater than 4, we show a 404 page because something's wrong.
+    
+    
+    //If length is 5, it is assumed that the format of the url is host/[dashboard]/topic/section/dashboard
+    //If the length is 4: host/[dashboard]/topic/section
+    //If the length is 3: host/[dashboard]/topic
+    //2: index page
+    //If the length is less than 2 or greater than 5, show 404
+    
     var pathToParse = newPath;
-    if (newPath.length == 4) {
+    if (newPath.length == 5) {
         var dashboard = pathToParse.pop();
         var section = pathToParse.pop();
         var topic = pathToParse.pop();
-    } else if (newPath.length == 3) {
+    } else if (newPath.length == 4) {
         var section = pathToParse.pop();
         var topic = pathToParse.pop();
-    } else if (newPath.length == 2) {
+    } else if (newPath.length == 3) {
         var topic = pathToParse.pop();
         var openSection = $("[aria-expanded='true']");
         openSection.collapse('hide');
-    } else if (newPath.length < 1 || newPath.length > 4) {
+    } else if (newPath.length < 2 || newPath.length > 5) {
         show404();
         return;
     }
