@@ -124,7 +124,8 @@ $(document).on('click', 'li.dashboard-button a', function (event) {
 
     event.preventDefault();
     var src = $(event.target).attr('val');
-    var url = event.originalEvent.srcElement.id;
+    var url = event.originalEvent.target.id;
+    //var url = event.originalEvent.srcElement.id;
     var loc = location.pathname;
     history.pushState(loc + "/" + url, null, loc + "/" + url);
     showDashboard(src);
