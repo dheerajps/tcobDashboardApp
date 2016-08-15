@@ -28,6 +28,12 @@ $(function () {
 //Add a popstate event listener to handle the browser back button functionality
 window.addEventListener('popstate', function (e) {
     var path = e.state; //Get the state/url
+    if(path === null){
+        goToHome();
+    }
+    if(path == '/dashboard/'){
+        goToHome();
+    }
     var splitPath = path.split('/');
     var newPath = '';
     if(splitPath[0] == '..'){
@@ -37,10 +43,11 @@ window.addEventListener('popstate', function (e) {
     for(i = 0; i < pathLen; i++){
         if(splitPath[i] != '..' && splitPath[i] != ''){
             newPath = newPath + splitPath[i];
+            if(i != (pathLen - 1)){
+                newPath = newPath + '/';
+            }
         }
-        if(i != (pathLen - 1)){
-            newPath = newPath + '/';
-        }
+        
     }
 
     if ($('#back-button').length) {
