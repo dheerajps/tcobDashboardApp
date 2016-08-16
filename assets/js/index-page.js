@@ -36,7 +36,7 @@ window.addEventListener('popstate', function (e) {
     }
     var splitPath = path.split('/');
     var newPath = '';
-    if(splitPath[0] == '..'){
+    if(splitPath[0] == '..' || splitPath[0] == ''){
         newPath = '/';
     }
     pathLen = splitPath.length;
