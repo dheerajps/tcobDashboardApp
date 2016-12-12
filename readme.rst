@@ -90,28 +90,41 @@ DATA ENTRY FOR DASHBOARD
 ************************
 
 Jason Evans (evansjf@missouri.edu) will send in a request to add dashboards to the database and will include A URL and the path in the Dashboard where it should be placed and also the group who has access to it.
-Server : SQLHOST.IATS.MISSOURI.EDU
+Go to SQL Server Management Studio app on desktop
+
+Server : SQLHOST.IATS.MISSOURI.EDU (production) OR cob-webdev (development)
+
 Database : mubusassessment
+
 Each Dashboard URL is associated with a Topic and a Section and will have it's own name.
+
+
 STEP 1:
 Go to the dbo.dashboard_urls table and add the given dashboard url there.
 The ID is not auto-increment. 
 Create a new ID under url_id, enter the name provided under url_name, look up the topic_id for the given topic from dbo.dashboard_topics table, look up the section_id for the given section from dbo.dashboard_sections table, and paste the given url under url_address
 If a section is not provided enter the section_id as sec00 (this comes under General)
+
+
 STEP 2:
 Usually the Group ID will look something similar to this
+
 "CN=COB Dashboard Departments MBA SocialMedia,OU=Dashboards,OU=Applications,OU=COB,OU=MU,DC=col,DC=missouri,DC=edu" 
+
 Departments ---> Topic Name
 MBA ----> Section Name
 SocialMedia ---->URL Name
 Any other Group ID will be a variation of the above example. Please contact Drew Reeves or Dustin Mordica to get the CN of a particular Group. Or you can perform an LDAP LOOK UP using ldap_tools.
 
 a.) If the Group which is specified is new/ not already present in dbo.dashboard_groups JUMP TO STEP 3
+
 b.) Go to the dbo.dashboard_linkURLtoGroup table and add the created url_id in STEP 1 under url_id here and add the group_id from dbo.dashboard_groups as specified by Jason/Created in STEP 3.
+
 
 STEP 3:
 If it is a new Group which needs to be created, enter the CN first in the group_id column of dbo.dashboard_groups and give it a a name accordingly
 Then go to STEP 2 b
+
 
 STEP 4:
 Log-in to the apps.business.missouri.edu/dashboard to check if the added URL shows up on the Dashboard application.
