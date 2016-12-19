@@ -1,12 +1,14 @@
 ###################
-TCOB Base App
+TCOB Dashboard App
+This is an in house business solution application used by TCoB(https://business.missouri.edu/) to track and visualize different metrics(enrollment, attendance, social media interaction and analytics) in each department in the form of a dashboard, the dashboard provider is CYFE. 
+This was developed by the student developers working there. PHP / MSSQL along with HTML CSS And JS was used. 
 ###################
 
 *******************
 ToDo List
 *******************
 
-    1. Test things
+   
 
 ****************************
 
@@ -130,4 +132,5 @@ STEP 4:
 Log-in to the apps.business.missouri.edu/dashboard to check if the added URL shows up on the Dashboard application.
 
 STEP 5:
-Tell Jason it's done and forget about it :)
+Tell Jason it's done and forget about it:)
+Any questions regarding this contact Dheeraj(dpstm3@mail.missouri.edu)
