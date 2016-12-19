@@ -89,10 +89,10 @@ contributors to the CodeIgniter project and you, the CodeIgniter user.
 DATA ENTRY FOR DASHBOARD
 ************************
 
-Jason Evans (evansjf@missouri.edu) will send in a request to add dashboards to the database and will include A URL and the path in the Dashboard where it should be placed and also the group who has access to it.
+Jason  will send in a request to add dashboards to the database and will include A URL and the path in the Dashboard where it should be placed and also the group who has access to it.
 Go to SQL Server Management Studio app on desktop
 
-Server : SQLHOST.IATS.MISSOURI.EDU (production) OR cob-webdev (development)
+Server : (production) OR cob-****** (development)
 
 Database : mubusassessment
 
